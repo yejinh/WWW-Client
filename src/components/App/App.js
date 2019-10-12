@@ -1,0 +1,22 @@
+import React from 'react';
+import Login from '../Login/Login';
+import ProjectsContainer from '../../container/ProjectsContainer';
+import NewProjectContainer from '../../container/NewProjectContainer';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const App = props => {
+  console.log(props)
+  return (
+    <Router>
+      <Switch>
+        {!props.isLoggedIn &&
+          <Login authenticate={props.authenticate} />
+        }
+        <Route exact path='/' component={ProjectsContainer} />
+        <Route path='/projects/new' component={NewProjectContainer} />
+      </Switch>
+    </Router>
+  );
+};
+
+export default App;
