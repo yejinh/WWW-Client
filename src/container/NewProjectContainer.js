@@ -1,37 +1,55 @@
 import { connect } from 'react-redux';
 import NewProject from '../components/NewProject/NewProject';
-import Cookie from 'js-cookie';
-import { addMember } from '../actions';
+import { findMember, addMember } from '../actions';
 
-const dispatchSubmitClick = dispatch => async() => {
+const token = JSON.parse(localStorage.getItem('WWW')).token;
+
+const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
   try {
-
+    const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({ title, projectMembers })
+    });
   } catch(err) {
     console.error(err);
   }
 };
 
-const dispatchMemberFind = dispatch => async email => {
+const dispatchMemberFind = dispatch => async(email) => {
   try {
-    const res = await fetch(`http://localhost:8080/api/users/${email}`, {
+    const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/${email}`, {
       method: 'GET',
-      headers: { 'Authorization': `Bearer ${Cookie.get('token')}` }
+      headers: { Authorization: `Bearer ${token}` }
     });
 
     const json = await res.json();
-    dispatch(addMember(json.userData));
+    dispatch(findMember(json.userData));
   } catch(err) {
     console.error(err);
   }
-}
+};
+
+const dispatchMemberAdd = dispatch => async() => {
+  try {
+    dispatch(addMember());
+  } catch(err) {
+    console.error(err);
+  }
+};
 
 const mapStateToProps = state => ({
+  projectMembers: state.newProject.projectMembers,
   user: state.newProject.user
 });
 
 const mapDispatchToProps = dispatch => ({
   onSubmitClick: dispatchSubmitClick(dispatch),
-  onMemberFind: dispatchMemberFind(dispatch)
+  onMemberFind: dispatchMemberFind(dispatch),
+  onMemberAdd: dispatchMemberAdd(dispatch)
 });
 
 export default connect(
