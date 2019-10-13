@@ -5,7 +5,7 @@ import NewProjectContainer from '../../container/NewProjectContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = props => {
-  console.log(props)
+  console.log(props);
   return (
     <Router>
       <Switch>

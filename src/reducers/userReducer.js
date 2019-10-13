@@ -1,29 +1,34 @@
-import { IS_LOGGED_IN, SET_USER_INFO, LOGOUT } from '../constants/actionType';
+import { LOGIN, LOGOUT } from '../constants/actionType';
 
-const initialState = {
-  user: {},
-  isLoggedIn: true
-};
+const token = JSON.parse(localStorage.getItem('WWW'));
+let initialState;
+
+if (!token) {
+  initialState = {
+    user: {},
+    isLoggedIn: false
+  }
+} else {
+  initialState = {
+    user: {},
+    isLoggedIn: true
+  }
+}
 
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
-    case IS_LOGGED_IN:
-      return {
-        ...state,
-        isLoggedIn: action.data
-      };
+    case LOGIN:
+      localStorage.setItem('WWW', JSON.stringify({ token: action.token }));
 
-    case SET_USER_INFO:
       return {
-        ...state,
-        userInfo: action.userInfo
+        user: { email: action.email, name: action.name },
+        isLoggedIn: true
       };
 
       case LOGOUT:
         return {
           user: {},
-          auth: false,
-          errMessage: null
+          isLoggedIn: false
         };
 
     default:

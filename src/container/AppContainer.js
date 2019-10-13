@@ -1,15 +1,13 @@
 // import firebase from 'firebase'; // 배포용?
 import { connect } from 'react-redux';
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import firebaseConfig from '../config/firebase';
 import App from '../components/App/App';
-import { isLoggedIn } from '../actions';
+import { login } from '../actions';
 
 const dispatchAuthenticate = dispatch => async() => {
   try {
-    dispatch(isLoggedIn(false));
-
     if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
     }
@@ -20,7 +18,7 @@ const dispatchAuthenticate = dispatch => async() => {
     const { email } = user;
     const name = user.displayName;
 
-    const res = await fetch('http://localhost:8080/api/auth/authenticate', {
+    const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/auth/authenticate`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ email, name })
@@ -29,9 +27,7 @@ const dispatchAuthenticate = dispatch => async() => {
     const json = await res.json();
     const { access_token } = json;
 
-    dispatch(isLoggedIn(true));
-
-    return access_token;
+    dispatch(login(access_token, email, name));
   } catch(err) {
     console.error(err);
   }
