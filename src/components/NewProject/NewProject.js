@@ -7,7 +7,8 @@ const NewProject = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.dispatchSubmitClick();
+    props.onSubmitClick(title, props.projectMembers);
+    setTitle('');
   }
 
   const handleFindMemberByEmail = e => {
@@ -23,30 +24,34 @@ const NewProject = props => {
         onSubmit={handleSubmit}
       >
         <input
-          type="text"
+          type='text'
           value={title}
+          required
           onChange={e => setTitle(e.target.value)}
         />
-        <input
-          type="submit"
-        />
+        <input type='submit'/>
       </form>
       <form
         onSubmit={handleFindMemberByEmail}
       >
         <input
-          type="text"
+          type='text'
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
         <input
-          type="submit"
-          value="find"
+          type='submit'
+          value='find'
         />
       </form>
       {props.user &&
-        <span>{props.user.email}{props.user.name}</span>
+        <span onClick={props.onMemberAdd}>
+          {props.user.email}{props.user.name}
+        </span>
       }
+      <ul>
+        {props.projectMembers.map(member => <li key={member._id}>{member.name}</li>)}
+      </ul>
     </>
   );
 };
