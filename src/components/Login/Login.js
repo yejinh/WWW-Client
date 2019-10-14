@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.scss';
 
 const Login = props => {
   const login = async() => {
@@ -10,7 +11,14 @@ const Login = props => {
   }
 
   return (
-    <div onClick={login}>Login with Facebook</div>
+    <div className="login-wrapper">
+      <h1>We Will Work</h1>
+      <div
+        onClick={login}
+        className="login-button"
+      >
+      </div>
+    </div>
   );
 };
 

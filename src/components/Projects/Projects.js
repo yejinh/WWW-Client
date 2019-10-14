@@ -1,11 +1,13 @@
 import React from 'react';
-import HeaderContainer from '../../container/HeaderContainer';
+import NavContainer from '../../container/NavContainer';
+import './Projects.scss';
 
 const Projects = props => {
   return (
     <>
-      <HeaderContainer />
-      <div>PROJECTS!</div>
+      <div className="projects-wrapper">
+        <NavContainer />
+      </div>
     </>
   );
 }

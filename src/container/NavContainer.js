@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Header from '../components/Header/Header';
+import Nav from '../components/Nav/Nav';
 import { logout } from '../actions';
 
 const dispatchLogout = dispatch => async() => {
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(Nav);

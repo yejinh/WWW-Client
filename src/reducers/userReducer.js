@@ -11,7 +11,9 @@ if (!token) {
 } else {
   initialState = {
     user: {},
+    // SASS...
     isLoggedIn: true
+    // isLoggedIn: false
   }
 }
 

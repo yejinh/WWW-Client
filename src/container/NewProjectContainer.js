@@ -21,6 +21,7 @@ const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
 
 const dispatchMemberFind = dispatch => async(email) => {
   try {
+    console.log(email)
     const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/${email}`, {
       method: 'GET',
       headers: { Authorization: `Bearer ${token}` }
