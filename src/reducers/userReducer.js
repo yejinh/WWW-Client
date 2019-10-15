@@ -1,8 +1,14 @@
-import { LOGIN, LOGOUT, FETCH_USER_DATA } from '../constants/actionType';
+import {
+  LOGIN,
+  LOGOUT,
+  FETCH_USER_DATA,
+  FETCH_PROJECTS
+} from '../constants/actionType';
 
 const token = JSON.parse(localStorage.getItem('WWW'));
 const initialState = {
   user: {},
+  projects: [],
   isLoggedIn: token ? true : false
 };
 
@@ -22,8 +28,15 @@ const userReducer = (state = initialState, action) => {
         user: {
           email: action.email,
           name: action.name,
-          profilePhoto: action.profilePhoto
+          profilePhoto: action.profilePhoto,
+          id: action.userId
         }
+      };
+
+    case FETCH_PROJECTS:
+      return {
+        ...state,
+        projects: action.projects
       };
 
     case LOGOUT:
@@ -31,6 +44,7 @@ const userReducer = (state = initialState, action) => {
 
       return {
         user: {},
+        projects: [],
         isLoggedIn: false
       };
 

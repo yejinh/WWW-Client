@@ -45,6 +45,7 @@ const dispatchUserDataFetch = dispatch => async() => {
   });
 
   const json = await res.json();
+
   dispatch(fetchUserData(json.userData));
 };
 
@@ -55,7 +56,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   authenticate: dispatchAuthenticate(dispatch),
-  userDataFetch: dispatchUserDataFetch(dispatch)
+  fetchUserData: dispatchUserDataFetch(dispatch)
 });
 
 export default connect(

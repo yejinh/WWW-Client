@@ -7,8 +7,8 @@ import './App.scss';
 
 const App = props => {
   useEffect(() => {
-    props.userDataFetch();
-  }, []);
+    props.fetchUserData();
+  });
 
   return (
     <Router>

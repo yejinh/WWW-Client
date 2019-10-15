@@ -9,7 +9,13 @@ export const fetchUserData = userData => ({
   type: actionType.FETCH_USER_DATA,
   email: userData.email,
   name: userData.name,
-  profilePhoto: `${userData.profilePhoto}?height=200&width=200`
+  profilePhoto: `${userData.profilePhoto}?height=200&width=200`,
+  userId: userData._id
+});
+
+export const fetchProjects = projects => ({
+  type: actionType.FETCH_PROJECTS,
+  projects
 });
 
 export const findMember = foundUserData => ({
