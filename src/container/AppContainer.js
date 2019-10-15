@@ -8,9 +8,7 @@ import { login, fetchUserData } from '../actions';
 
 const dispatchAuthenticate = dispatch => async() => {
   try {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
     const provider = new firebase.auth.FacebookAuthProvider();
     const result = await firebase.auth().signInWithPopup(provider);
@@ -38,7 +36,7 @@ const dispatchUserDataFetch = dispatch => async() => {
 
   if (!userData) return;
 
-  const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/${userData.email}`, {
+  const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

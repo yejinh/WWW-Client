@@ -11,7 +11,7 @@ const Nav = props => {
         <div className="nav-user-profile">
           <div
             className="nav-user-photo"
-            style={{ "background-image": `url(${profilePhoto})` }}
+            style={{ "backgroundImage": `url(${profilePhoto})` }}
           />
           <div
             className="nav-user-name"
