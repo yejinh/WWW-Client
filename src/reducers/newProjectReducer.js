@@ -1,4 +1,8 @@
-import { FIND_MEMBER, ADD_MEMBER } from '../constants/actionType';
+import {
+  FIND_MEMBER,
+  ADD_MEMBER,
+  CREATE_NEW_PROJECT
+} from '../constants/actionType';
 import _ from 'lodash';
 
 const initialState = {
@@ -25,6 +29,12 @@ const newProjectReducer = (state = initialState, action) => {
 
       return {
         projectMembers: [...state.projectMembers],
+        foundUser: null
+      };
+
+    case CREATE_NEW_PROJECT:
+      return {
+        projectMembers: [],
         foundUser: null
       };
 

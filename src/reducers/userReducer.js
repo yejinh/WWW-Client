@@ -9,10 +9,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
     case LOGIN:
-      localStorage.setItem('WWW', JSON.stringify({
-        token: action.token,
-        email: action.email
-      }));
+      localStorage.setItem('WWW', JSON.stringify({ token: action.token }));
 
       return {
         ...state,
@@ -30,6 +27,8 @@ const userReducer = (state = initialState, action) => {
       };
 
     case LOGOUT:
+      localStorage.removeItem('WWW');
+
       return {
         user: {},
         isLoggedIn: false

@@ -1,9 +1,8 @@
 import * as actionType from '../constants/actionType';
 
-export const login = (token, email) => ({
+export const login = (token) => ({
   type: actionType.LOGIN,
-  token,
-  email
+  token
 });
 
 export const fetchUserData = userData => ({
@@ -20,6 +19,10 @@ export const findMember = foundUserData => ({
 
 export const addMember = () => ({
   type: actionType.ADD_MEMBER
+});
+
+export const createNewProject = () => ({
+  type: actionType.CREATE_NEW_PROJECT
 });
 
 export const logout = () => ({

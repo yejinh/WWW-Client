@@ -5,15 +5,16 @@ $projectIcon: './src/projectIcon.png';
   border: 1px solid;
   display: inline-block;
   position: fixed;
-  padding: 40px;
   width: 300px;
   height: 1000px;
+  padding: 40px;
   font-family: $noto;
 }
 
 .nav-user {
   &-profile {
     padding: 50px 0;
+    margin-bottom: 50px;
     text-align: center;
   }
 
@@ -33,29 +34,38 @@ $projectIcon: './src/projectIcon.png';
   }
 }
 
-
-.nav {
-  &-projects {
-    background-image: url($projectIcon);
-    background-repeat: no-repeat;
-    background-size: 300px;
-    background-position: center;
-  }
+.nav-contents {
+  // border: 1px solid $black;
 }
 
 .nav-content {
-  display: block;
-  text-align: center;
-  padding: 15px 5px;
-  margin: {
-    bottom: 15px;
-  };
-  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 30px;
+  line-height: 40px;
   border-radius: 30px;
+  color: $black;
   transition: all .5s ease-in-out;
-  color: black;
+  cursor: pointer;
 
   &:hover {
     background-color: $ultralightgray;
+    font-size: 17px;
+  }
+
+  &-projects {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    // background-image: url($projectIcon);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+  }
+
+  &-text {
+    // padding-left: 10px;
   }
 }

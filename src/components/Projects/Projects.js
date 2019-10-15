@@ -1,15 +1,12 @@
 import React from 'react';
-import Nav from '../Nav/Nav';
+import NavContainer from '../../container/NavContainer';
 import './Projects.scss';
 
 const Projects = props => {
   return (
     <>
       <div className="projects-wrapper">
-        <Nav
-          userName={props.userName}
-          profilePhoto={props.profilePhoto}
-        />
+        <NavContainer />
       </div>
     </>
   );

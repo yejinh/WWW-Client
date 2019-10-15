@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import Nav from '../Nav/Nav';
+import NavContainer from '../../container/NavContainer';
+import { vaildEmail } from '../../constants/regex';
 import './NewProject.scss';
 
 const NewProject = props => {
   const [ title, setTitle ] = useState('');
   const [ email, setEmail ] = useState('');
+  const [ errMessage, setErrMessage ] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,16 +16,19 @@ const NewProject = props => {
 
   const handleFindMemberByEmail = e => {
     e.preventDefault();
+
+    if (!vaildEmail.test(email)) {
+      setErrMessage('유효하지 않은 이메일 주소입니다');
+      return setEmail('');
+    }
+
     props.onMemberFind(email);
     setEmail('');
   }
 
   return (
     <>
-      <Nav
-        userName={props.userName}
-        profilePhoto={props.profilePhoto}
-      />
+      <NavContainer />
       <div className="new-project-wrapper">
         <div className="new-project-form-wrapper">
           <h1>NewProject</h1>
@@ -42,15 +47,20 @@ const NewProject = props => {
             onSubmit={handleFindMemberByEmail}
           >
             <input
-              type='text'
+              type='email'
               value={email}
+              required
               onChange={e => setEmail(e.target.value)}
+              onClick={e => setErrMessage('')}
             />
             <input
               type='submit'
               value='find'
             />
           </form>
+          {errMessage &&
+            <span>{errMessage}</span>
+          }
           {props.foundUser &&
             <span onClick={props.onMemberAdd}>
               {props.foundUser.email}{props.foundUser.name}

@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
 import NewProject from '../components/NewProject/NewProject';
-import { findMember, addMember } from '../actions';
+import {
+  findMember,
+  addMember,
+  createNewProject
+} from '../actions';
 
 const userData = JSON.parse(localStorage.getItem('WWW'));
 
-const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
+const dispatchSubmitProject = dispatch => async(title, projectMembers) => {
   try {
-    const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects`, {
+    await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,6 +18,8 @@ const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
       },
       body: JSON.stringify({ title, projectMembers })
     });
+
+    dispatch(createNewProject());
   } catch(err) {
     console.error(err);
   }
@@ -27,18 +33,15 @@ const dispatchMemberFind = dispatch => async(email) => {
     });
 
     const json = await res.json();
+
     dispatch(findMember(json.userData));
   } catch(err) {
     console.error(err);
   }
 };
 
-const dispatchMemberAdd = dispatch => async() => {
-  try {
-    dispatch(addMember());
-  } catch(err) {
-    console.error(err);
-  }
+const dispatchMemberAdd = dispatch => () => {
+  dispatch(addMember());
 };
 
 const mapStateToProps = state => ({
@@ -49,7 +52,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSubmitClick: dispatchSubmitClick(dispatch),
+  onSubmitClick: dispatchSubmitProject(dispatch),
   onMemberFind: dispatchMemberFind(dispatch),
   onMemberAdd: dispatchMemberAdd(dispatch)
 });
