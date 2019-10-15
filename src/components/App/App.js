@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Login from '../Login/Login';
 import ProjectsContainer from '../../container/ProjectsContainer';
 import NewProjectContainer from '../../container/NewProjectContainer';
@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
 const App = props => {
+  useEffect(() => {
+    props.userDataFetch();
+  });
+
   return (
     <Router>
       <Switch>

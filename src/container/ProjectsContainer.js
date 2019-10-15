@@ -10,7 +10,8 @@ const dispatchLogout = dispatch => async() => {
 };
 
 const mapStateToProps = state => ({
-
+  userName: state.userData.user.name,
+  profilePhoto: state.userData.user.profilePhoto
 });
 
 const mapDispatchToProps = dispatch => ({

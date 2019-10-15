@@ -3,10 +3,22 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = props => {
+  const { userName, profilePhoto } = props;
   return (
     <>
       <div className="nav-wrapper">
         <h1 className="nav-title">We Will Work</h1>
+        <div className="nav-user-profile">
+          <div
+            className="nav-user-photo"
+            style={{ "background-image": `url(${profilePhoto})` }}
+          />
+          <div
+            className="nav-user-name"
+          >
+            {userName}
+          </div>
+        </div>
         <Link
           to="/"
           className="nav-content"

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import NewProject from '../components/NewProject/NewProject';
 import { findMember, addMember } from '../actions';
 
-const token = JSON.parse(localStorage.getItem('WWW')).token;
+const userData = JSON.parse(localStorage.getItem('WWW'));
 
 const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
   try {
@@ -10,7 +10,7 @@ const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${userData.token}`
       },
       body: JSON.stringify({ title, projectMembers })
     });
@@ -21,10 +21,9 @@ const dispatchSubmitClick = dispatch => async(title, projectMembers) => {
 
 const dispatchMemberFind = dispatch => async(email) => {
   try {
-    console.log(email)
     const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/${email}`, {
       method: 'GET',
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${userData.token}` }
     });
 
     const json = await res.json();
@@ -43,8 +42,10 @@ const dispatchMemberAdd = dispatch => async() => {
 };
 
 const mapStateToProps = state => ({
+  userName: state.userData.user.name,
+  profilePhoto: state.userData.user.profilePhoto,
   projectMembers: state.newProject.projectMembers,
-  user: state.newProject.user
+  foundUser: state.newProject.foundUser
 });
 
 const mapDispatchToProps = dispatch => ({

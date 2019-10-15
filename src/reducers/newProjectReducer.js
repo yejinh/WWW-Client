@@ -1,6 +1,6 @@
 import { FIND_MEMBER, ADD_MEMBER } from '../constants/actionType';
 const initialState = {
-  user: null,
+  foundUser: null,
   projectMembers: []
 };
 
@@ -9,13 +9,13 @@ const newProjectReducer = (state = initialState, action) => {
     case FIND_MEMBER:
       return {
         ...state,
-        user: action.userData
+        foundUser: action.foundUserData
       };
 
     case ADD_MEMBER:
       return {
         projectMembers: [...state.projectMembers, state.user],
-        user: null
+        foundUser: null
       };
 
     default:

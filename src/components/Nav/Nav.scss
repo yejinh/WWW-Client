@@ -3,10 +3,44 @@ $projectIcon: './src/projectIcon.png';
 
 .nav-wrapper {
   border: 1px solid;
+  display: inline-block;
+  position: fixed;
   padding: 40px;
   width: 300px;
   height: 1000px;
   font-family: $noto;
+}
+
+.nav-user {
+  &-profile {
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  &-photo {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &-name {
+    font-size: 20px;
+  }
+}
+
+
+.nav {
+  &-projects {
+    background-image: url($projectIcon);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position: center;
+  }
 }
 
 .nav-content {
@@ -23,14 +57,5 @@ $projectIcon: './src/projectIcon.png';
 
   &:hover {
     background-color: $ultralightgray;
-  }
-}
-
-.nav {
-  &-projects {
-    background-image: url($projectIcon);
-    background-repeat: no-repeat;
-    background-size: 300px;
-    background-position: center;
   }
 }
