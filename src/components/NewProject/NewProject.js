@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavContainer from '../../container/NavContainer';
 import FoundUserForm from '../FoundUserForm/FoundUserForm';
-import ProjectMembers from '../ProjectMembers/ProjectMembers';
+import AddedMembers from '../AddedMembers/AddedMembers';
 import { vaildEmail } from '../../constants/regex';
 import './NewProject.scss';
 
@@ -10,7 +10,7 @@ const NewProject = props => {
   const {
     loggedInUser,
     isCreated,
-    projectMembers,
+    addedMembers,
     foundUser,
     onInitMember,
     onSubmitClick,
@@ -29,7 +29,7 @@ const NewProject = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmitClick(title, projectMembers);
+    onSubmitClick(title, addedMembers);
     setTitle('');
   };
 
@@ -96,15 +96,18 @@ const NewProject = props => {
                 user={foundUser}
               />
             }
-            <ul className="new-project-members-wrapper">
-              {projectMembers.map(member => (
-                <ProjectMembers
-                  loggedInUser={loggedInUser}
-                  member={member}
-                  onRemoveClick={onMemberRemove}
-                />
-              ))}
-            </ul>
+            {addedMembers.length &&
+              <ul className="new-project-members-wrapper">
+                {addedMembers.map(member => (
+                  <AddedMembers
+                    key={member._id}
+                    loggedInUser={loggedInUser}
+                    member={member}
+                    onRemoveClick={onMemberRemove}
+                  />
+                ))}
+              </ul>
+            }
           </div>
         }
       </div>

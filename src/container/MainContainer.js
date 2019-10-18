@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Main from '../components/Main/Main';
-import { fetchProjects } from '../actions';
+import { fetchProjects, fetchMembers } from '../actions';
 
-const dispatchfetchProjects = dispatch => async(userId) => {
+const dispatchfetchProjects = dispatch => async userId => {
   const userData = JSON.parse(localStorage.getItem('WWW'));
 
   const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects/${userId}`, {
@@ -12,17 +12,17 @@ const dispatchfetchProjects = dispatch => async(userId) => {
       Authorization: `Bearer ${userData.token}`
     }
   });
-  console.log(res);
 
   const json = await res.json();
+
   dispatch(fetchProjects(json.projects));
+  dispatch(fetchMembers(json.members));
 };
 
 const mapStateToProps = state => ({
-  userId: state.userData.user.id,
-  projects: state.userData.projects,
-  userName: state.userData.user.name,
-  profilePhoto: state.userData.user.profilePhoto
+  userId: state.userData.user._id,
+  projects: state.projectsData.projects,
+  members: state.projectsData.members
 });
 
 const mapDispatchToProps = dispatch => ({

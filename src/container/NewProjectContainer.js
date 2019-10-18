@@ -14,7 +14,7 @@ const dispatchMemberInit = dispatch => loggedInUser => {
   dispatch(initMember(loggedInUser));
 };
 
-const dispatchSubmitProject = dispatch => async(title, projectMembers) => {
+const dispatchSubmitProject = dispatch => async(title, addedMembers) => {
   try {
     await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects`, {
       method: 'POST',
@@ -22,7 +22,7 @@ const dispatchSubmitProject = dispatch => async(title, projectMembers) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${userData.token}`
       },
-      body: JSON.stringify({ title, projectMembers })
+      body: JSON.stringify({ title, addedMembers })
     });
 
     dispatch(createNewProject());
@@ -31,7 +31,7 @@ const dispatchSubmitProject = dispatch => async(title, projectMembers) => {
   }
 };
 
-const dispatchMemberFind = dispatch => async(email) => {
+const dispatchMemberFind = dispatch => async email => {
   try {
     const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/${email}`, {
       method: 'GET',
@@ -56,9 +56,9 @@ const dispatchMemberRemove = dispatch => user => {
 
 const mapStateToProps = state => ({
   loggedInUser: state.userData.user,
-  projectMembers: state.newProject.projectMembers,
-  foundUser: state.newProject.foundUser,
-  isCreated: state.newProject.isCreated
+  addedMembers: state.newProjectData.addedMembers,
+  foundUser: state.newProjectData.foundUser,
+  isCreated: state.newProjectData.isCreated
 });
 
 const mapDispatchToProps = dispatch => ({

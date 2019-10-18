@@ -1,0 +1,9 @@
+@import '../variables.scss';
+
+.project-wrapper {
+  border: 1px solid black;
+  display: inline-block;
+  width: 55%;
+  min-height: 100vh;
+  padding-left: 400px;
+}

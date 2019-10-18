@@ -18,6 +18,11 @@ export const fetchProjects = projects => ({
   projects
 });
 
+export const fetchMembers = members => ({
+  type: actionType.FETCH_MEMBERS,
+  members
+});
+
 export const initMember = loggedInUser => ({
   type: actionType.INIT_MEMBER,
   loggedInUser

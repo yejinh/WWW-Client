@@ -10,7 +10,7 @@ import _ from 'lodash';
 
 const initialState = {
   foundUser: null,
-  projectMembers: [],
+  addedMembers: [],
   isCreated: false
 };
 
@@ -19,7 +19,7 @@ const newProjectReducer = (state = initialState, action) => {
     case INIT_MEMBER:
       return {
         ...state,
-        projectMembers: [ action.loggedInUser ]
+        addedMembers: [ action.loggedInUser ]
       }
 
     case FIND_MEMBER:
@@ -29,30 +29,30 @@ const newProjectReducer = (state = initialState, action) => {
       };
 
     case ADD_MEMBER:
-      if (_.every(state.projectMembers.map(member => member._id !== state.foundUser._id))) {
+      if (_.every(state.addedMembers.map(member => member._id !== state.foundUser._id))) {
 
         return {
           ...state,
-          projectMembers: [ ...state.projectMembers, state.foundUser ],
+          addedMembers: [ ...state.addedMembers, state.foundUser ],
           foundUser: null
         };
       }
 
       return {
         ...state,
-        projectMembers: [ ...state.projectMembers ],
+        addedMembers: [ ...state.addedMembers ],
         foundUser: null
       };
 
     case REMOVE_MEMBER:
       return {
         ...state,
-        projectMembers: state.projectMembers.filter(member => member._id !== action.user._id)
+        addedMembers: state.addedMembers.filter(member => member._id !== action.user._id)
       };
 
     case CREATE_NEW_PROJECT:
       return {
-        projectMembers: [],
+        addedMembers: [],
         foundUser: null,
         isCreated: true
       };
