@@ -1,4 +1,57 @@
+@import '../variables.scss';
+
 .new-project-wrapper {
+  border: 1px solid black;
   display: inline-block;
-  padding-left: 500px;
+  width: 55%;
+  min-height: 100vh;
+  padding-left: 400px;
+}
+
+.new-project {
+  &-form-wrapper {
+    border: 1px solid black;
+  }
+}
+
+.new-project-members {
+  &-wrapper {
+    border: 1px solid black;
+  }
+
+  &-member {
+    padding:10px;
+    border-radius: 3px;
+    background-color: $ultralightgray;
+    list-style-type: none;
+  }
+}
+
+label {
+  position: relative;
+  display: inline-block;
+  width: 350px;
+  height: 50px;
+  margin-bottom: 15px;
+
+  .option-radio {
+    position: absolute;
+    width: 20px;
+    opacity: 0;
+  }
+
+  .option-radio:checked + .option {
+    border-radius: 3px;
+    background-color: #afafaf;
+    color: $white;
+  }
+
+  .option {
+    border: 1px solid #afafaf;
+    display: inline-block;
+    width: 350px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 3px;
+  }
 }

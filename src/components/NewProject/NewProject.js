@@ -1,18 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import NavContainer from '../../container/NavContainer';
+import FoundUserForm from '../FoundUserForm/FoundUserForm';
+import ProjectMembers from '../ProjectMembers/ProjectMembers';
 import { vaildEmail } from '../../constants/regex';
 import './NewProject.scss';
 
 const NewProject = props => {
+  const {
+    loggedInUser,
+    isCreated,
+    projectMembers,
+    foundUser,
+    onInitMember,
+    onSubmitClick,
+    onMemberFind,
+    onMemberAdd,
+    onMemberRemove
+  } = props;
+
   const [ title, setTitle ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ errMessage, setErrMessage ] = useState('');
 
+  useEffect(() => {
+    onInitMember(loggedInUser);
+  }, [ loggedInUser ]);
+
   const handleSubmit = e => {
     e.preventDefault();
-    props.onSubmitClick(title, props.projectMembers);
+    onSubmitClick(title, projectMembers);
     setTitle('');
-  }
+  };
 
   const handleFindMemberByEmail = e => {
     e.preventDefault();
@@ -22,54 +41,72 @@ const NewProject = props => {
       return setEmail('');
     }
 
-    props.onMemberFind(email);
+    onMemberFind(email);
     setEmail('');
-  }
+  };
 
   return (
     <>
       <NavContainer />
       <div className="new-project-wrapper">
-        <div className="new-project-form-wrapper">
-          <h1>NewProject</h1>
-          <form
-            onSubmit={handleSubmit}
-          >
-            <input
-              type='text'
-              value={title}
-              required
-              onChange={e => setTitle(e.target.value)}
-            />
-            <input type='submit'/>
-          </form>
-          <form
-            onSubmit={handleFindMemberByEmail}
-          >
-            <input
-              type='email'
-              value={email}
-              required
-              onChange={e => setEmail(e.target.value)}
-              onClick={e => setErrMessage('')}
-            />
-            <input
-              type='submit'
-              value='find'
-            />
-          </form>
-          {errMessage &&
-            <span>{errMessage}</span>
-          }
-          {props.foundUser &&
-            <span onClick={props.onMemberAdd}>
-              {props.foundUser.email}{props.foundUser.name}
-            </span>
-          }
-          <ul>
-            {props.projectMembers.map(member => <li key={member._id}>{member.name}</li>)}
-          </ul>
-        </div>
+        {isCreated &&
+          <>
+            <div>New Project Created!</div>
+            <Link
+              to="/"
+              className="new-project-main-button"
+            >
+              main
+            </Link>
+          </>
+        }
+        {!isCreated &&
+          <div className="new-project-form-wrapper">
+            <h1>NewProject</h1>
+            <form onSubmit={handleSubmit}>
+              <input
+                type='text'
+                value={title}
+                required
+                onChange={e => setTitle(e.target.value)}
+              />
+              <input type='submit'/>
+            </form>
+            <form
+              onSubmit={handleFindMemberByEmail}
+            >
+              <input
+                type='email'
+                value={email}
+                required
+                onChange={e => setEmail(e.target.value)}
+                onClick={e => setErrMessage('')}
+              />
+              <input
+                type='submit'
+                value='find'
+              />
+            </form>
+            {errMessage &&
+              <span>{errMessage}</span>
+            }
+            {foundUser &&
+              <FoundUserForm
+                onSubmitClick={onMemberAdd}
+                user={foundUser}
+              />
+            }
+            <ul className="new-project-members-wrapper">
+              {projectMembers.map(member => (
+                <ProjectMembers
+                  loggedInUser={loggedInUser}
+                  member={member}
+                  onRemoveClick={onMemberRemove}
+                />
+              ))}
+            </ul>
+          </div>
+        }
       </div>
     </>
   );

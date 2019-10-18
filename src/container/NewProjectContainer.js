@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
 import NewProject from '../components/NewProject/NewProject';
 import {
+  initMember,
   findMember,
   addMember,
+  removeMember,
   createNewProject
 } from '../actions';
 
 const userData = JSON.parse(localStorage.getItem('WWW'));
+
+const dispatchMemberInit = dispatch => loggedInUser => {
+  dispatch(initMember(loggedInUser));
+};
 
 const dispatchSubmitProject = dispatch => async(title, projectMembers) => {
   try {
@@ -44,17 +50,23 @@ const dispatchMemberAdd = dispatch => () => {
   dispatch(addMember());
 };
 
+const dispatchMemberRemove = dispatch => user => {
+  dispatch(removeMember(user));
+};
+
 const mapStateToProps = state => ({
-  userName: state.userData.user.name,
-  profilePhoto: state.userData.user.profilePhoto,
+  loggedInUser: state.userData.user,
   projectMembers: state.newProject.projectMembers,
-  foundUser: state.newProject.foundUser
+  foundUser: state.newProject.foundUser,
+  isCreated: state.newProject.isCreated
 });
 
 const mapDispatchToProps = dispatch => ({
+  onInitMember: dispatchMemberInit(dispatch),
   onSubmitClick: dispatchSubmitProject(dispatch),
   onMemberFind: dispatchMemberFind(dispatch),
-  onMemberAdd: dispatchMemberAdd(dispatch)
+  onMemberAdd: dispatchMemberAdd(dispatch),
+  onMemberRemove: dispatchMemberRemove(dispatch)
 });
 
 export default connect(
