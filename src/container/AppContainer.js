@@ -50,7 +50,7 @@ const dispatchUserDataFetch = dispatch => async() => {
 };
 
 const mapStateToProps = state => ({
-  userData: state.userData.userData,
+  userData: state.userData.user,
   isLoggedIn: state.userData.isLoggedIn
 });
 

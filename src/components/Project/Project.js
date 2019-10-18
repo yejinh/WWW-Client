@@ -3,12 +3,13 @@ import NavContainer from '../../container/NavContainer';
 import './Project.scss';
 
 const Project = props => {
-  console.log(props);
+  const project = props.location.state.project;
+
   return (
     <>
       <NavContainer />
       <div className="project-wrapper">
-        PROJECT
+        <h1>{project.title}</h1>
       </div>
     </>
   );

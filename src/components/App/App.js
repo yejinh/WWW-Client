@@ -6,20 +6,20 @@ import ProjectConainter from '../../container/ProjectConainter';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
-const App = props => {
+const App = ({ isLoggedIn, authenticate, fetchUserData }) => {
   useEffect(() => {
-    props.fetchUserData();
-  });
+    fetchUserData();
+  }, [ isLoggedIn ]);
 
   return (
     <Router>
       <Switch>
-        {!props.isLoggedIn &&
-          <Login authenticate={props.authenticate} />
+        {!isLoggedIn &&
+          <Login authenticate={authenticate} />
         }
         <Route exact path='/' component={MainContainer} />
-        <Route path='/project' component={ProjectConainter} />
-        <Route path='/projects/new' component={NewProjectContainer} />
+        <Route exact path='/projects/new' component={NewProjectContainer} />
+        <Route path='/project/:project_id' component={ProjectConainter} />
       </Switch>
     </Router>
   );

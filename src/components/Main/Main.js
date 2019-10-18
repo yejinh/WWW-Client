@@ -6,16 +6,11 @@ import './Main.scss';
 const Main = props => {
   const { userId, projects, members, fetchProjects } = props;
 
-  console.log(projects);
-
   useEffect(() => {
-
     if (!userId) return;
 
     fetchProjects(userId);
   }, [ userId ]);
-
-  console.log(projects, 'projects');
 
   return (
     <>
@@ -29,13 +24,16 @@ const Main = props => {
                 <div>
                   <Link
                     key={project._id}
-                    to="/project"
+                    to={{
+                      pathname: `/project/${project._id}`,
+                      state: { project: project }
+                    }}
                     className="main-project-title"
                   >
                     {project.title}
                   </Link>
                 </div>
-                {members.length &&
+                {members[i] &&
                   members[i].map(member => (
                     <div
                       className="main-project-member-photo"

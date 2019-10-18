@@ -19,11 +19,13 @@ const dispatchfetchProjects = dispatch => async userId => {
   dispatch(fetchMembers(json.members));
 };
 
-const mapStateToProps = state => ({
-  userId: state.userData.user._id,
-  projects: state.projectsData.projects,
-  members: state.projectsData.members
-});
+const mapStateToProps = state => {
+  return {
+    userId: state.userData.user._id,
+    projects: state.projectsData.projects,
+    members: state.projectsData.members
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchProjects: dispatchfetchProjects(dispatch)
