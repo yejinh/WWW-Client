@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Projects from '../components/Projects/Projects';
+import Main from '../components/Main/Main';
 import { fetchProjects } from '../actions';
 
 const dispatchfetchProjects = dispatch => async(userId) => {
@@ -12,6 +12,7 @@ const dispatchfetchProjects = dispatch => async(userId) => {
       Authorization: `Bearer ${userData.token}`
     }
   });
+  console.log(res);
 
   const json = await res.json();
   dispatch(fetchProjects(json.projects));
@@ -31,4 +32,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Projects);
+)(Main);

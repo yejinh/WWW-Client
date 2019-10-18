@@ -29,7 +29,7 @@ const userReducer = (state = initialState, action) => {
           email: action.email,
           name: action.name,
           profilePhoto: action.profilePhoto,
-          id: action.userId
+          _id: action.userId
         }
       };
 

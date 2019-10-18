@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Login from '../Login/Login';
-import ProjectsContainer from '../../container/ProjectsContainer';
+import MainContainer from '../../container/MainContainer';
 import NewProjectContainer from '../../container/NewProjectContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
@@ -16,7 +16,7 @@ const App = props => {
         {!props.isLoggedIn &&
           <Login authenticate={props.authenticate} />
         }
-        <Route exact path='/' component={ProjectsContainer} />
+        <Route exact path='/' component={MainContainer} />
         <Route path='/projects/new' component={NewProjectContainer} />
       </Switch>
     </Router>

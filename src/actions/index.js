@@ -1,6 +1,6 @@
 import * as actionType from '../constants/actionType';
 
-export const login = (token) => ({
+export const login = token => ({
   type: actionType.LOGIN,
   token
 });
@@ -18,13 +18,23 @@ export const fetchProjects = projects => ({
   projects
 });
 
+export const initMember = loggedInUser => ({
+  type: actionType.INIT_MEMBER,
+  loggedInUser
+});
+
 export const findMember = foundUserData => ({
   type: actionType.FIND_MEMBER,
   foundUserData
 });
 
 export const addMember = () => ({
-  type: actionType.ADD_MEMBER
+  type: actionType.ADD_MEMBER,
+});
+
+export const removeMember = user => ({
+  type: actionType.REMOVE_MEMBER,
+  user
 });
 
 export const createNewProject = () => ({
