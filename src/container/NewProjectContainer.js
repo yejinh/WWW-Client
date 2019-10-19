@@ -14,7 +14,7 @@ const dispatchMemberInit = dispatch => loggedInUser => {
   dispatch(initMember(loggedInUser));
 };
 
-const dispatchSubmitProject = dispatch => async(title, addedMembers) => {
+const dispatchSubmitProject = dispatch => async(title, endDate, addedMembers) => {
   try {
     await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects`, {
       method: 'POST',
@@ -22,7 +22,7 @@ const dispatchSubmitProject = dispatch => async(title, addedMembers) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${userData.token}`
       },
-      body: JSON.stringify({ title, addedMembers })
+      body: JSON.stringify({ title, endDate, addedMembers })
     });
 
     dispatch(createNewProject());
@@ -35,7 +35,9 @@ const dispatchMemberFind = dispatch => async email => {
   try {
     const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/${email}`, {
       method: 'GET',
-      headers: { Authorization: `Bearer ${userData.token}` }
+      headers: {
+        Authorization: `Bearer ${userData.token}`
+      }
     });
 
     const json = await res.json();

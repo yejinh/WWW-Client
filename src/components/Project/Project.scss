@@ -7,3 +7,11 @@
   min-height: 100vh;
   padding-left: 400px;
 }
+
+.project-member {
+  &-wrapper {
+    display: flex;
+    border: 1px solid $black;
+    width: 100%;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import dateFormat from 'dateformat';
 import NavContainer from '../../container/NavContainer';
 import FoundUserForm from '../FoundUserForm/FoundUserForm';
 import AddedMembers from '../AddedMembers/AddedMembers';
@@ -19,7 +20,11 @@ const NewProject = props => {
     onMemberRemove
   } = props;
 
+  const tomorrow = new Date().setDate(new Date().getDate() + 1);
+  const minTime = dateFormat(tomorrow, "yyyy-mm-dd'T'HH:00");
+
   const [ title, setTitle ] = useState('');
+  const [ endDate, setEndDate ] = useState(minTime);
   const [ email, setEmail ] = useState('');
   const [ errMessage, setErrMessage ] = useState('');
 
@@ -29,7 +34,7 @@ const NewProject = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmitClick(title, addedMembers);
+    onSubmitClick(title, endDate, addedMembers);
     setTitle('');
   };
 
@@ -48,27 +53,37 @@ const NewProject = props => {
   return (
     <>
       <NavContainer />
-      <div className="new-project-wrapper">
+      <div className='new-project-wrapper'>
         {isCreated &&
           <>
             <div>New Project Created!</div>
             <Link
-              to="/"
-              className="new-project-main-button"
+              to='/'
+              className='new-project-main-button'
             >
               main
             </Link>
           </>
         }
         {!isCreated &&
-          <div className="new-project-form-wrapper">
+          <div className='new-project-form-wrapper'>
             <h1>NewProject</h1>
             <form onSubmit={handleSubmit}>
               <input
                 type='text'
+                onChange={e => setTitle(e.target.value)}
                 value={title}
                 required
-                onChange={e => setTitle(e.target.value)}
+                maxLength='12'
+              />
+              <input
+                type='datetime-local'
+                onChange={e => setEndDate(e.target.value)}
+                value={minTime}
+                min={minTime}
+                className='end-date'
+                autocomplete='off'
+                required
               />
               <input type='submit'/>
             </form>
@@ -77,10 +92,10 @@ const NewProject = props => {
             >
               <input
                 type='email'
-                value={email}
-                required
                 onChange={e => setEmail(e.target.value)}
                 onClick={e => setErrMessage('')}
+                value={email}
+                required
               />
               <input
                 type='submit'
@@ -97,7 +112,7 @@ const NewProject = props => {
               />
             }
             {addedMembers.length &&
-              <ul className="new-project-members-wrapper">
+              <ul className='new-project-members-wrapper'>
                 {addedMembers.map(member => (
                   <AddedMembers
                     key={member._id}

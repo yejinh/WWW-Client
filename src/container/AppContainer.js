@@ -12,14 +12,15 @@ const dispatchAuthenticate = dispatch => async() => {
 
     const provider = new firebase.auth.FacebookAuthProvider();
     const result = await firebase.auth().signInWithPopup(provider);
-    const { user } = result;
-    const { email, photoURL } = user;
-    const name = user.displayName;
+    const { email, displayName, photoURL } = result.user;
+    const profilePhoto = photoURL;
+    const userName = displayName.split(' ');
+    const name = userName.length > 2 ? `${userName[0]} ${userName[1]}` : displayName;
 
     const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/auth/authenticate`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email, name, photoURL })
+      body: JSON.stringify({ email, name, profilePhoto })
     });
 
     const json = await res.json();
