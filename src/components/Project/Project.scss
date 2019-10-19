@@ -3,15 +3,29 @@
 .project-wrapper {
   border: 1px solid black;
   display: inline-block;
-  width: 55%;
+  width: 65%;
   min-height: 100vh;
   padding-left: 400px;
+}
+
+.project-chart {
+  width: 400px;
+  height: 400px;
 }
 
 .project-member {
   &-wrapper {
     display: flex;
+    width: 75%;
     border: 1px solid $black;
-    width: 100%;
   }
+
+  &-chart {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+li {
+  width: 15%;
 }
