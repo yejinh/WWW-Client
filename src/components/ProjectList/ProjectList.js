@@ -29,14 +29,14 @@ const ProjectList = ({ project, members }) => {
           {project.title}
         </Link>
         {isInProgress
-          ? <div class="progress-in progress">in progress</div>
-          : <div class="progress-not progress">ended</div>
+          ? <div className="progress-in progress">in progress</div>
+          : <div className="progress-not progress">ended</div>
         }
         <div>end date: {endDate}</div>
       </div>
       <ul className="main-project-member-wrapper">
         {members &&
-          members.map(member => <ProjectMembers member={member} />)
+          members.map(member => <ProjectMembers key={member._id} member={member} />)
         }
       </ul>
     </li>

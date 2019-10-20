@@ -40,7 +40,7 @@ export const getTime = time => {
   }
 }
 
-export const chartColor = [
+export const CHART_COLOR = [
   '#b78276',
   '#3b6048',
   '#f2b146',
@@ -51,3 +51,16 @@ export const chartColor = [
   '#c45608',
   '#ff944e'
 ];
+
+export const EMPTY_DATA = {
+  datasets: [{
+    data: [1],
+    fillColor: 'rgba(220,220,220,0.2)',
+    strokeColor: 'rgba(220,220,220,1)',
+    pointColor: 'rgba(220,220,220,1)',
+    pointStrokeColor: '#fff',
+    pointHighlightFill: '#fff',
+    pointHighlightStroke: 'rgba(220,220,220,1)'
+  }],
+  labels: ['not working yet']
+};

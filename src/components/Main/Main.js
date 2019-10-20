@@ -21,6 +21,7 @@ const Main = props => {
           {projects.length &&
             projects.map((project, i) => (
               <ProjectList
+                key={project._id}
                 project={project}
                 members={members[i]}
               />
