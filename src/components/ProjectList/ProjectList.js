@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import dateFormat from 'dateformat';
 import ProjectMembers from '../ProjectMembers/ProjectMembers';
+import { getDateFormat } from '../../utils';
 
 const ProjectList = ({ project, members }) => {
   const { end_date } = project;
   const now = new Date().toISOString();
   const isInProgress = end_date > now;
-  const endDate = dateFormat(end_date, 'dddd, mmmm dS, yyyy hTT');
+  const endDate = getDateFormat(end_date);
 
   return (
     <li
@@ -19,10 +19,7 @@ const ProjectList = ({ project, members }) => {
           key={project._id}
           to={{
             pathname: `/project/${project._id}`,
-            state: {
-              project: project,
-              members: members
-            }
+            state: { members: members }
           }}
           className="main-project-title"
         >
@@ -36,7 +33,12 @@ const ProjectList = ({ project, members }) => {
       </div>
       <ul className="main-project-member-wrapper">
         {members &&
-          members.map(member => <ProjectMembers key={member._id} member={member} />)
+          members.map(member => (
+            <ProjectMembers
+              key={member._id}
+              member={member}
+            />
+          ))
         }
       </ul>
     </li>

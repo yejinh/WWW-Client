@@ -1,3 +1,7 @@
+import dateFormat from 'dateformat';
+
+export const getDateFormat = date => dateFormat(date, 'dddd, mmmm dS, yyyy hTT');
+
 export const getTime = time => {
   let day = 0;
   let hour = 0;
@@ -38,7 +42,7 @@ export const getTime = time => {
       return `${minute} minutes`;
     }
   }
-}
+};
 
 export const CHART_COLOR = [
   '#b78276',

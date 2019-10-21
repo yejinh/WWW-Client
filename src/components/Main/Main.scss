@@ -1,7 +1,7 @@
 @import '../variables.scss';
 
 .main-wrapper {
-  border: 1px solid $black;
+  // border: 1px solid $black;
   display: inline-block;
   width: 65%;
   min-height: 100vh;
@@ -22,7 +22,7 @@ li {
 .main-project-member {
   &-wrapper {
     display: flex;
-    border: 1px solid $black;
+    // border: 1px solid $black;
     width: 60%;
   }
 }

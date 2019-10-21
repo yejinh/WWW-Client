@@ -1,11 +1,13 @@
 import {
-  FETCH_MEMBERS,
-  FETCH_PROJECTS
+  FETCH_PROJECTS,
+  FETCH_PROJECT,
+  FETCH_MEMBERS
 } from '../constants/actionType';
 
 
 const initialState = {
   projects: [],
+  project: {},
   members: []
 };
 
@@ -15,6 +17,12 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         projects: action.projects
+      };
+
+    case FETCH_PROJECT:
+      return {
+        ...state,
+        project: action.project
       };
 
     case FETCH_MEMBERS: {

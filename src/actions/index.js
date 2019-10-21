@@ -18,6 +18,11 @@ export const fetchProjects = projects => ({
   projects
 });
 
+export const fetchProject = project => ({
+  type: actionType.FETCH_PROJECT,
+  project
+});
+
 export const fetchMembers = members => ({
   type: actionType.FETCH_MEMBERS,
   members
