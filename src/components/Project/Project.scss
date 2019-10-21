@@ -4,7 +4,11 @@
   display: inline-block;
   width: 75%;
   min-height: 100vh;
-  padding-left: 350px;
+  padding: {
+    top: 100px;
+    left: 450px;
+  }
+  background-color: $ultralightgray;
 }
 
 .project-chart {
@@ -12,4 +16,21 @@
   height: 500px;
   margin: 0 auto;
   text-align: center;
+}
+
+.project-member {
+  &-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-chart-wrapper {
+    width: 300px;
+  }
+
+  &-chart {
+    width: 300px;
+    height: 300px;
+    padding: 50px 0;
+  }
 }

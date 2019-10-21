@@ -1,3 +1,4 @@
+export const IS_LOADING = 'IS_LOADING';
 export const LOGIN = 'LOGIN';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';

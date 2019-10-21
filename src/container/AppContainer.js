@@ -4,10 +4,15 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../config/firebase';
 import App from '../components/App/App';
-import { login, fetchUserData } from '../actions';
+import {
+  isLoading,
+  login,
+  fetchUserData
+} from '../actions';
 
 const dispatchAuthenticate = dispatch => async() => {
   try {
+    isLoading(true);
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -27,6 +32,7 @@ const dispatchAuthenticate = dispatch => async() => {
     const { access_token } = json;
 
     dispatch(login(access_token));
+    isLoading(false);
   } catch(err) {
     console.error(err);
   }
@@ -51,6 +57,7 @@ const dispatchUserDataFetch = dispatch => async() => {
 };
 
 const mapStateToProps = state => ({
+  isLoading: state.userData.isLoading,
   userData: state.userData.user,
   isLoggedIn: state.userData.isLoggedIn
 });

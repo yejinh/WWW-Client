@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import Main from '../components/Main/Main';
-import { fetchProjects, fetchMembers } from '../actions';
+import { fetchProjects, fetchMembers, isLoading } from '../actions';
 
 const dispatchfetchProjects = dispatch => async userId => {
+  dispatch(isLoading(true));
+
   const userData = JSON.parse(localStorage.getItem('WWW'));
 
   const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects/${userId}`, {
@@ -17,15 +19,15 @@ const dispatchfetchProjects = dispatch => async userId => {
 
   dispatch(fetchProjects(json.projects));
   dispatch(fetchMembers(json.members));
+  dispatch(isLoading(false));
 };
 
-const mapStateToProps = state => {
-  return {
-    userId: state.userData.user._id,
-    projects: state.projectsData.projects,
-    members: state.projectsData.members
-  };
-};
+const mapStateToProps = state => ({
+  isLoading: state.projectsData.isLoading,
+  userId: state.userData.user._id,
+  projects: state.projectsData.projects,
+  members: state.projectsData.members
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchProjects: dispatchfetchProjects(dispatch)

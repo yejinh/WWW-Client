@@ -1,32 +1,47 @@
 @import '../variables.scss';
-$projectIcon: './src/projectIcon.png';
+@mixin backgroundImage ($image) {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+$PROEJCT_ICON: './src/project-icon.png';
+$NEW_PROEJCT_ICON: './src/new-project-icon.png';
+$SIGN_OUT: './src/sign-out.png';
 
 .nav-wrapper {
-  border: 1px solid;
   display: inline-block;
   position: fixed;
-  width: 250px;
+  width: 220px;
   height: 100vh;
   padding: 40px;
   font-family: $noto;
+  background-color: $deepblue;
 }
 
 .nav-title {
+  margin: 0;
   text-align: center;
+  font-size: 20px;
+  font-family: $noto;
+  color: $white;
 }
 
 .nav-user {
   &-profile {
-    padding: 50px 0;
-    margin-bottom: 50px;
+    padding: 40px 0;
+    margin-bottom: 40px;
     text-align: center;
   }
 
   &-photo {
     display: inline-block;
-    width: 70%;
-    height: 200px;
-    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,38 +50,43 @@ $projectIcon: './src/projectIcon.png';
 
   &-name {
     padding: 10px 0;
-    font-size: 20px;
+
+    font-size: 18px;
+    font-weight: lighter;
+    color: $lightblue;
   }
 }
 
+.nav-contents {
+  text-align: center;
+}
+
 .nav-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  line-height: 40px;
   padding: 5px;
   margin-bottom: 30px;
-  line-height: 40px;
+  text-align: center;
   border-radius: 30px;
-  color: $black;
+  opacity: 0.7;
+  color: $white;
   transition: all .5s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    background-color: $ultralightgray;
     font-size: 17px;
+    opacity: 1;
   }
 
   &-projects {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    // background-image: url($projectIcon);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-position: center;
+    @include backgroundImage($PROEJCT_ICON);
   }
 
-  &-text {
-    // padding-left: 10px;
+  &-new-project {
+    @include backgroundImage($NEW_PROEJCT_ICON);
+  }
+
+  &-sign-out {
+    @include backgroundImage($SIGN_OUT);
   }
 }

@@ -1,5 +1,10 @@
 import * as actionType from '../constants/actionType';
 
+export const isLoading = data => ({
+  type: actionType.IS_LOADING,
+  data
+});
+
 export const login = token => ({
   type: actionType.LOGIN,
   token

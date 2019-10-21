@@ -4,7 +4,13 @@ import ProjectList from '../ProjectList/ProjectList';
 import './Main.scss';
 
 const Main = props => {
-  const { userId, projects, members, fetchProjects } = props;
+  const {
+    isLoading,
+    userId,
+    projects,
+    members,
+    fetchProjects
+  } = props;
 
   useEffect(() => {
     if (!userId) return;
@@ -16,21 +22,37 @@ const Main = props => {
     <>
       <NavContainer />
       <div className="main-wrapper">
-        <h1>MY PROJECTS</h1>
-        <ul className="main-project-wrapper">
-          {projects.length &&
-            projects.map((project, i) => (
-              <ProjectList
-                key={project._id}
-                project={project}
-                members={members[i]}
-              />
-            ))
-          }
-        </ul>
+      {isLoading &&
+        <img
+          src='https://i.pinimg.com/originals/39/ee/de/39eede5b8818d7c02d2340a53a652961.gif'
+          alt='loading'
+        />
+      }
+      {!isLoading &&
+        <>
+          <h1>MY PROJECTS</h1>
+          <ul className="main-project-wrapper">
+            <li className='project-header'>
+              <span className='project-header-title'>PROJECT</span>
+              <span className='project-header-progress'>STATUS</span>
+              <span className='project-header-end-date'>END DATE</span>
+              <span className='project-header-members'>MEMBERS</span>
+            </li>
+            {projects.length &&
+              projects.map((project, i) => (
+                <ProjectList
+                  key={project._id}
+                  project={project}
+                  members={members[i]}
+                />
+              ))
+            }
+          </ul>
+        </>
+      }
       </div>
     </>
   );
-}
+};
 
 export default Main;

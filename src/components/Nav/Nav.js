@@ -25,22 +25,22 @@ const Nav = props => {
             to="/"
             className="nav-content"
           >
-            <span className="nav-content-projects"/>
-            <span className="nav-content-text">MY PROJECTS</span>
+            <div className="nav-content-projects"/>
+            <div className="nav-content-text">DASHBOARD</div>
           </Link>
           <Link
             to="/projects/new"
             className="nav-content"
           >
-            <span className="nav-content-new-project"/>
-            <span className="nav-content-text">NEW PROJECT</span>
+            <div className="nav-content-new-project"/>
+            <div className="nav-content-text">NEW PROJECT</div>
           </Link>
           <div
             className="nav-content"
             onClick={onLogoutClick}
           >
-            <span className="nav-content-sign-out"/>
-            <span className="nav-content-text">Sign out</span>
+            <div className="nav-content-sign-out"/>
+            <div className="nav-content-text">SIGN OUT</div>
           </div>
         </div>
       </div>
