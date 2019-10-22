@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
+import barIcon from './src/bar-icon.png';
+import pieIcon from './src/pie-icon.png';
 import {
   getTime,
   CHART_COLOR,
@@ -56,7 +58,12 @@ const ProjectChartTotal = ({ members, memberData }) => {
 
   return (
     <div className='project-chart'>
-      <div onClick={() => setChartStyle(!chartStyle)}>Chart Style</div>
+      <img
+        onClick={() => setChartStyle(!chartStyle)}
+        className='project-chart-style'
+        src={chartStyle ? barIcon : pieIcon}
+        alt='chart-style'
+      />
       {chartStyle
         ? <Pie
             data={dataSets()}

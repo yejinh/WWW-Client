@@ -39,8 +39,8 @@ const Project = props => {
             <div className='project-total-header'>
               <div>
                 <h1>{title}</h1>
-                <div className='project-date'>created at {getDateFormat(createdAt)}</div>
-                <div className='project-date'>end date {getDateFormat(endDate)}</div>
+                <div className='project-date'>{getDateFormat(createdAt)}</div>
+                <div className='project-date'>{getDateFormat(endDate)}</div>
               </div>
               <div>
                 <span
