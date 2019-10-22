@@ -1,0 +1,27 @@
+@import '../variables.scss';
+
+.new-project-members {
+  &-wrapper {
+    width: 520px;
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  list-style-type: none;
+  font-size: 18px;
+  border-radius: 3px;
+  background-color: $cadetblue;
+  color: $ultralightgray;
+
+  > button {
+    height: 30px;
+    border-radius: 3px;
+  }
+}

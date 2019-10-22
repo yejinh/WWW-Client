@@ -54,77 +54,94 @@ const NewProject = props => {
     <>
       <NavContainer />
       <div className='new-project-wrapper'>
-        {isCreated &&
-          <>
-            <div>New Project Created!</div>
-            <Link
-              to='/'
-              className='new-project-main-button'
-            >
-              main
-            </Link>
-          </>
-        }
-        {!isCreated &&
-          <div className='new-project-form-wrapper'>
-            <h1>NewProject</h1>
-            <form onSubmit={handleSubmit}>
-              <input
-                type='text'
-                onChange={e => setTitle(e.target.value)}
-                value={title}
-                required
-                maxLength='12'
-              />
-              <input
-                type='datetime-local'
-                onChange={e => setEndDate(e.target.value)}
-                value={minTime}
-                min={minTime}
-                className='end-date'
-                autocomplete='off'
-                required
-              />
-              <input type='submit'/>
-            </form>
-            <form
-              onSubmit={handleFindMemberByEmail}
-            >
-              <input
-                type='email'
-                onChange={e => setEmail(e.target.value)}
-                onClick={e => setErrMessage('')}
-                value={email}
-                required
-              />
-              <input
-                type='submit'
-                value='find'
-              />
-            </form>
-            {errMessage &&
-              <span>{errMessage}</span>
-            }
-            {foundUser &&
-              <FoundUserForm
-                onSubmitClick={onMemberAdd}
-                user={foundUser}
-              />
-            }
-            {addedMembers.length &&
-              <ul className='new-project-members-wrapper'>
-                {addedMembers.map(member => (
-                  <AddedMembers
-                    key={member._id}
-                    loggedInUser={loggedInUser}
-                    member={member}
-                    onRemoveClick={onMemberRemove}
+        <div className='new-project-form-wrapper'>
+          {isCreated &&
+            <>
+              <div className='new-project-success'>
+                New Project Created!
+              </div>
+              <div className='new-project-success-icon'/>
+              <Link to='/'>
+                <div className='new-project-main-button' />
+                <div> BACK TO MAIN </div>
+              </Link>
+            </>
+          }
+          {!isCreated &&
+            <>
+              <h1>NewProject</h1>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type='text'
+                  onChange={e => setTitle(e.target.value)}
+                  value={title}
+                  placeholder='TITLE'
+                  maxLength='12'
+                  required
+                />
+                <input
+                  type='datetime-local'
+                  onChange={e => setEndDate(e.target.value)}
+                  value={minTime}
+                  min={minTime}
+                  className='end-date'
+                  autoComplete='off'
+                  required
+                />
+                <input
+                  type='submit'
+                  className='new-project-submit'
+                  value='Submit'
+                />
+              </form>
+              <form
+                onSubmit={handleFindMemberByEmail}
+              >
+                <label
+                  for='find-member'
+                  className='find-member-label'
+                >
+                  Find Members
+                </label>
+                <div>
+                  <input
+                    type='email'
+                    id='find-member'
+                    onChange={e => setEmail(e.target.value)}
+                    onClick={e => setErrMessage('')}
+                    value={email}
+                    placeholder='example@example.com'
+                    required
                   />
-                ))}
-              </ul>
-            }
-          </div>
-        }
+                  <input
+                    type='submit'
+                    className='find-member-submit'
+                    value='find'
+                  />
+                </div>
+              </form>
+              {errMessage && <span>{errMessage}</span> }
+              {foundUser &&
+                <FoundUserForm
+                  onSubmitClick={onMemberAdd}
+                  user={foundUser}
+                />
+              }
+              {addedMembers.length &&
+                <ul className='new-project-members-wrapper'>
+                  {addedMembers.map(member => (
+                    <AddedMembers
+                      key={member._id}
+                      loggedInUser={loggedInUser}
+                      member={member}
+                      onRemoveClick={onMemberRemove}
+                    />
+                  ))}
+                </ul>
+              }
+            </>
+          }
+        </div>
       </div>
     </>
   );

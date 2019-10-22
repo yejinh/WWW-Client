@@ -10,8 +10,6 @@ const ProjectList = ({ project, members }) => {
   const isInProgress = end_date > now;
   const endDate = getDateFormat(end_date);
 
-  members = members.concat(members.slice());
-
   return (
     <li
       key={project._id}
@@ -43,11 +41,11 @@ const ProjectList = ({ project, members }) => {
         <div className='project-list-member-wrapper'>
           {members &&
             members.map(member => (
-              <span className='project-members'>
-                <ProjectMembers
-                  key={member._id}
-                  member={member}
-                />
+              <span
+                key={member._id}
+                className='project-members'
+              >
+                <ProjectMembers member={member} />
               </span>
             ))
           }

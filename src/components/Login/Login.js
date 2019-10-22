@@ -11,12 +11,17 @@ const Login = props => {
   }
 
   return (
-    <div className="login-wrapper">
-      <h1>We Will Work</h1>
-      <div
-        onClick={login}
-        className="login-button"
-      >
+    <div className='login-wrapper'>
+      <div className='login-back' />
+      <div className='login-box'>
+        <div className='logo' />
+        <h1>We Will Work</h1>
+        <div
+          onClick={login}
+          className='login-button'
+        >
+          GET STARTED
+        </div>
       </div>
     </div>
   );

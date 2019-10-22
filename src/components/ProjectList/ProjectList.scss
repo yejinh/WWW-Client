@@ -2,13 +2,14 @@
 
 .project-members {
   display: inline-block;
-  width: 100px;
+  width: 90px;
   flex-shrink: 0;
+  font-size: 15px;
 }
 
 .project-list {
   &-wrapper {
-    height: 100px;
+    height: 80px;
     margin-bottom: 10px;
     padding: {
       top: 15px;
@@ -33,7 +34,7 @@
     vertical-align: middle;
 
     &:hover {
-      font-size: 25px;
+      transform: scale(1.05);
     }
   }
 

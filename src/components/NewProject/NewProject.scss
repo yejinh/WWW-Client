@@ -1,38 +1,118 @@
 @import '../variables.scss';
+$successIcon: './src/success-icon.png';
+$homeIcon: './src/home-icon.png';
+@mixin backgroundImg($image) {
+  margin: 180px auto 0;
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 .new-project-wrapper {
-  border: 1px solid black;
-  display: inline-block;
-  width: 55%;
   min-height: 100vh;
-  padding-left: 400px;
+  padding: {
+    top: 100px;
+    left: 300px;
+    bottom: 100px;
+  }
+  background-color: $ultralightgray;
 }
 
 .new-project {
   &-form-wrapper {
-    border: 1px solid black;
+    position: relative;
+    width: 800px;
+    min-height: 500px;
+    padding: 40px 0 90px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    border-radius: 3px;
+    background-color: $white;
+  }
+
+  &-submit {
+    border: none;
+    position: absolute;
+    left: 50%;
+    bottom: 45px;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: $yellow;
+    transform: translateX(-50%);
+    cursor: pointer;
   }
 }
 
-.new-project-members {
-  &-wrapper {
-    border: 1px solid black;
+.new-project {
+  &-success {
+    margin-top: 20px;
+    font-size: 30px;
   }
 
-  &-member {
-    padding:10px;
-    border-radius: 3px;
-    background-color: $ultralightgray;
-    list-style-type: none;
+  &-success-icon {
+    width: 200px;
+    height: 200px;
+    @include backgroundImg($successIcon);
+  }
+
+  &-main-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    @include backgroundImg($homeIcon);
+    transition: all .5s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+input[type = text],
+input[type = email],
+input[type = datetime-local] {
+  height: 50px;
+  margin: 15px auto;
+  padding-left: 15px;
+  outline: none;
+  font-size: 18px;
+}
+
+input[type = text],
+input[type = datetime-local] {
+  display: block;
+  width: 500px;
+  border-radius: 3px;
+}
+
+input[type = email] {
+  width: 450px;
+  border-radius: 3px;
+}
+
+input {
+  border: 1px solid $borderGray;
+}
+
+form {
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 530px;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 
 label {
-  position: relative;
   display: inline-block;
-  width: 350px;
-  height: 50px;
-  margin-bottom: 15px;
+  width: 480px;
+  padding-top: 10px;
+  text-align: left;
 
   .option-radio {
     position: absolute;
@@ -42,16 +122,35 @@ label {
 
   .option-radio:checked + .option {
     border-radius: 3px;
-    background-color: #afafaf;
+    background-color: $borderGray;
     color: $white;
   }
 
   .option {
-    border: 1px solid #afafaf;
+    border: 1px solid $borderGray;
     display: inline-block;
-    width: 350px;
+    width: 450px;
     height: 50px;
+    margin-left: 10px;
+    padding-left: 10px;
     line-height: 50px;
     border-radius: 3px;
   }
+}
+
+#find-member {
+  margin-right: 10px;
+}
+
+.find-member-label {
+  display: block;
+  width: 480px;
+  padding-top: 10px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.add-member, .find-member-submit {
+  width: 50px;
+  height: 50px;
 }

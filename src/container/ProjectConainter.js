@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import Project from '../components/Project/Project';
 import { fetchProject, isLoading } from '../actions';
 
-const userData = JSON.parse(localStorage.getItem('WWW'));
 
 const dispatchfetchProject = dispatch => async projectId => {
+  const userData = await JSON.parse(localStorage.getItem('WWW'));
+
   dispatch(isLoading(true));
 
   const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects/project/${projectId}`, {
@@ -13,7 +14,7 @@ const dispatchfetchProject = dispatch => async projectId => {
   });
 
   const json = await res.json();
-  dispatch(fetchProject(json.project));
+  await dispatch(fetchProject(json.project));
   dispatch(isLoading(false));
 };
 

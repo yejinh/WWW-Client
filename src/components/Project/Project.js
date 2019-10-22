@@ -25,25 +25,39 @@ const Project = props => {
     <>
       <NavContainer />
       <div className='project-wrapper'>
-      {(isLoading || !members) &&
-        <img
-          src='https://i.pinimg.com/originals/39/ee/de/39eede5b8818d7c02d2340a53a652961.gif'
-          alt='loading'
-        />
-      }
-      {!isLoading &&
-        <>
-          <h1>{title}</h1>
-          <div>created at {getDateFormat(createdAt)}</div>
-          <div>end date {getDateFormat(endDate)}</div>
-          <div onClick={() => fetchProject(projectId)}>refresh</div>
-          <ProjectChartTotal
-            members={members}
-            memberData={memberData}
+      {(!members || isLoading) &&
+        <div className='loading'>
+          <img
+            src='https://i.pinimg.com/originals/39/ee/de/39eede5b8818d7c02d2340a53a652961.gif'
+            alt='loading'
           />
+        </div>
+      }
+      {(!isLoading && members) &&
+        <>
+          <div className='project-total'>
+            <div className='project-total-header'>
+              <div>
+                <h1>{title}</h1>
+                <div className='project-date'>created at {getDateFormat(createdAt)}</div>
+                <div className='project-date'>end date {getDateFormat(endDate)}</div>
+              </div>
+              <div>
+                <span
+                  className='project-refresh'
+                  onClick={() => fetchProject(projectId)}
+                />
+              </div>
+            </div>
+            <ProjectChartTotal
+              members={members}
+              memberData={memberData}
+            />
+          </div>
           <ul className='project-member-wrapper'>
             {memberData.map((member, i) => (
               <ProjectChartIndividual
+                key={member._id}
                 members={members}
                 member={member}
                 i={i}

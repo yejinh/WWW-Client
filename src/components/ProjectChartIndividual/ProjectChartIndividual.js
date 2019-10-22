@@ -6,9 +6,9 @@ import {
   CHART_COLOR,
   EMPTY_DATA
 } from '../../utils';
+import './ProjectChartIndividual.scss';
 
 const ProjectChartIndividual = ({ members, member, i }) => {
-
   const trackingTimes = members.map(member => member.time_tracking);
   const sortedTrackingTimes = trackingTimes.map(member => member.sort((a, b) => b.time - a.time));
   const laborTimePerMember = trackingTimes.map(tracking => tracking.reduce((acc, cur) => (acc + Math.floor(cur.time / 60)), 0));
@@ -49,21 +49,25 @@ const ProjectChartIndividual = ({ members, member, i }) => {
   };
 
   return (
-    <li
-      key={member._id}
-      className="project-member-chart-wrapper"
-    >
-      <div className='project-member-chart'>
-        <ProjectMembers member={member} />
-        <div>{getTime(laborTimePerMember[i])}</div>
-        <Doughnut
-          data={dataSets(sortedTrackingTimes[i])}
-          width={250}
-          height={250}
-          options={options(sortedTrackingTimes[i])}
-        />
-      </div>
-    </li>
+    <>
+      {laborTimePerMember &&
+        <li
+          key={member._id}
+          className="project-member-chart-wrapper"
+        >
+          <div className='project-member-chart'>
+            <ProjectMembers member={member} />
+            <div>{getTime(laborTimePerMember[i])}</div>
+            <Doughnut
+              data={dataSets(sortedTrackingTimes[i])}
+              width={200}
+              height={200}
+              options={options(sortedTrackingTimes[i])}
+            />
+          </div>
+        </li>
+      }
+    </>
   );
 };
 

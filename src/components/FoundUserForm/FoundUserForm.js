@@ -4,19 +4,20 @@ const FoundUserForm = ({ onSubmitClick, user }) => (
   <form onSubmit={onSubmitClick}>
     <label>
       <input
-        type="radio"
-        className="option-radio"
+        type='radio'
+        className='option-radio'
         required
       />
       <span
-        className="option"
+        className='option'
       >
       {user.name}
       </span>
     </label>
     <input
-      type="submit"
-      value="Add Member"
+      type='submit'
+      className='add-member'
+      value='Add'
     />
   </form>
 );

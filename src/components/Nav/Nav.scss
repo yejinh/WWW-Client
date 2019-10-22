@@ -1,8 +1,8 @@
 @import '../variables.scss';
 @mixin backgroundImage ($image) {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-image: url($image);
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,7 +15,7 @@ $SIGN_OUT: './src/sign-out.png';
 .nav-wrapper {
   display: inline-block;
   position: fixed;
-  width: 220px;
+  width: 160px;
   height: 100vh;
   padding: 40px;
   font-family: $noto;
@@ -33,14 +33,14 @@ $SIGN_OUT: './src/sign-out.png';
 .nav-user {
   &-profile {
     padding: 40px 0;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-align: center;
   }
 
   &-photo {
     display: inline-block;
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     border-radius: 100px;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -51,14 +51,10 @@ $SIGN_OUT: './src/sign-out.png';
   &-name {
     padding: 10px 0;
 
-    font-size: 18px;
+    font-size: 15px;
     font-weight: lighter;
     color: $lightblue;
   }
-}
-
-.nav-contents {
-  text-align: center;
 }
 
 .nav-content {
@@ -69,6 +65,7 @@ $SIGN_OUT: './src/sign-out.png';
   text-align: center;
   border-radius: 30px;
   opacity: 0.7;
+  font-size: 15px;
   color: $white;
   transition: all .5s ease-in-out;
   cursor: pointer;

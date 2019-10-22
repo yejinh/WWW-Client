@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import { CHART_COLOR, getTime } from '../../utils';
+import {
+  getTime,
+  CHART_COLOR,
+  EMPTY_DATA
+} from '../../utils';
+import './ProjectChartTotal.scss';
 
 const ProjectChartTotal = ({ members, memberData }) => {
   const [ chartStyle, setChartStyle ] = useState(true);
@@ -9,13 +14,45 @@ const ProjectChartTotal = ({ members, memberData }) => {
   const laborTimePerMember = trackingTimes.map(tracking => tracking.reduce((acc, cur) => (acc + Math.floor(cur.time / 60)), 0));
   const totalLaborTime = laborTimePerMember.reduce((acc, cur) => acc + cur);
 
-  const dataSets = () => ({
+  const dataSets = () => {
+    if (!totalLaborTime) {
+      return EMPTY_DATA;
+    }
+
+    return {
     datasets: [{
       data: laborTimePerMember,
       backgroundColor: CHART_COLOR
     }],
     labels: memberData.map(member => member.name)
-  });
+    }
+  };
+
+  const options = () => {
+    if (!totalLaborTime) {
+      return {
+        tooltips: {
+          enabled: false
+        }
+      };
+    }
+
+    if (chartStyle) {
+      return {
+        legend: {
+          labels: {
+            fontSize: 13
+          }
+        }
+      };
+    }
+
+    return {
+      legend: {
+        display: false
+      }
+    };
+  }
 
   return (
     <div className='project-chart'>
@@ -23,18 +60,15 @@ const ProjectChartTotal = ({ members, memberData }) => {
       {chartStyle
         ? <Pie
             data={dataSets()}
-            width={500}
-            height={500}
+            width={400}
+            height={400}
+            options={options()}
           />
         : <Bar
             data={dataSets()}
-            width={500}
-            height={500}
-            options={{
-              legend: {
-                display: false
-              }
-            }}
+            width={400}
+            height={400}
+            options={options()}
           />
       }
     <span>total labor time: {getTime(totalLaborTime)}</span>
