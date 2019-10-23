@@ -3,6 +3,7 @@ $REFRESH_ICON: './src/refresh-icon.png';
 
 .project-wrapper {
   display: inline-block;
+  width: calc(100% - 400px);
   min-height: 100vh;
   padding: {
     top: 80px;
