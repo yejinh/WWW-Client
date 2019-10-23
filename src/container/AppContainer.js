@@ -1,7 +1,7 @@
-// import firebase from 'firebase'; // 배포용?
-import { connect } from 'react-redux';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+import { connect } from 'react-redux';
 import firebaseConfig from '../config/firebase';
 import App from '../components/App/App';
 import {
