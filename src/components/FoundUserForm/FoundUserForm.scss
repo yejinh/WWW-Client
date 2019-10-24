@@ -1,0 +1,29 @@
+@import '../variables.scss';
+
+.option-radio {
+  position: absolute;
+  width: 20px;
+  opacity: 0;
+}
+
+.option-radio:checked + .option {
+  border-radius: 3px;
+  background-color: $borderGray;
+  color: $white;
+}
+
+.option {
+  border: 1px solid $borderGray;
+  display: inline-block;
+  width: 455px;
+  height: 50px;
+  margin-left: 2px;
+  padding-left: 10px;
+  line-height: 50px;
+  border-radius: 3px;
+}
+
+.add-member {
+  width: 50px;
+  height: 50px;
+}

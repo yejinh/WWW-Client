@@ -22,6 +22,9 @@ const Login = props => {
         >
           GET STARTED
         </div>
+        <div className='mobile-info'>
+          PC version Only. Thank you!
+        </div>
       </div>
     </div>
   );

@@ -14,9 +14,7 @@ const App = ({ isLoggedIn, authenticate, fetchUserData }) => {
   return (
     <Router>
       <Switch>
-        {!isLoggedIn &&
-          <Login authenticate={authenticate} />
-        }
+        {!isLoggedIn && <Login authenticate={authenticate} /> }
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/projects/new' component={NewProjectContainer} />
         <Route path='/project/:project_id' component={ProjectConainter} />

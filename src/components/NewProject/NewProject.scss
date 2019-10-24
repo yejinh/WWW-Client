@@ -10,11 +10,10 @@ $homeIcon: './src/home-icon.png';
 }
 
 .new-project-wrapper {
-  min-height: 100vh;
   padding: {
-    top: 100px;
-    left: 300px;
-    bottom: 100px;
+    top: 60px;
+    left: 250px;
+    bottom: 50px;
   }
   background-color: $ultralightgray;
 }
@@ -113,29 +112,6 @@ label {
   width: 480px;
   padding-top: 10px;
   text-align: left;
-
-  .option-radio {
-    position: absolute;
-    width: 20px;
-    opacity: 0;
-  }
-
-  .option-radio:checked + .option {
-    border-radius: 3px;
-    background-color: $borderGray;
-    color: $white;
-  }
-
-  .option {
-    border: 1px solid $borderGray;
-    display: inline-block;
-    width: 450px;
-    height: 50px;
-    margin-left: 10px;
-    padding-left: 10px;
-    line-height: 50px;
-    border-radius: 3px;
-  }
 }
 
 #find-member {
@@ -150,7 +126,7 @@ label {
   text-align: left;
 }
 
-.add-member, .find-member-submit {
+.find-member-submit {
   width: 50px;
   height: 50px;
 }

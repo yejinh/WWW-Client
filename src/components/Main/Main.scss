@@ -14,6 +14,7 @@
   padding: {
     top: 50px;
     left: 350px;
+    bottom: 50px;
   }
   background-color: $ultralightgray;
 }
@@ -34,6 +35,15 @@
 
 h1 {
   font-size: 20px;
+}
+
+.first-project {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  line-height: 150px;
+  font-size: 20px;
+  box-sizing: border-box;
 }
 
 li {
@@ -79,6 +89,7 @@ li {
 
   &-header-end-date, &-list-end-date {
     width: 120px;
+    padding-right: 20px;
   }
 
   &-list-end-date {

@@ -1,4 +1,5 @@
 import React from 'react';
+import './FoundUserForm.scss';
 
 const FoundUserForm = ({ onSubmitClick, user }) => (
   <form onSubmit={onSubmitClick}>

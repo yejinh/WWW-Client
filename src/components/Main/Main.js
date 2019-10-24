@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import NavContainer from '../../container/NavContainer';
 import ProjectList from '../ProjectList/ProjectList';
+import Loading from '../Loading/Loading';
 import './Main.scss';
 
 const Main = props => {
@@ -18,18 +20,12 @@ const Main = props => {
     fetchProjects(userId);
   }, [ userId ]);
 
+
   return (
     <>
       <NavContainer />
       <div className="main-wrapper">
-      {isLoading &&
-      <div className='loading'>
-        <img
-          src='https://i.pinimg.com/originals/39/ee/de/39eede5b8818d7c02d2340a53a652961.gif'
-          alt='loading'
-        />
-      </div>
-      }
+      {isLoading && <Loading />}
       {!isLoading &&
         <>
           <h1>MY PROJECTS</h1>
@@ -40,6 +36,16 @@ const Main = props => {
               <span className='project-header-end-date'>END DATE</span>
               <span className='project-header-members'>MEMBERS</span>
             </li>
+            {!projects.length &&
+              <li className='project-list-wrapper'>
+                <Link
+                  to='/projects/new'
+                  className='first-project'
+                >
+                  START PROJECT
+                </Link>
+              </li>
+            }
             {projects.length &&
               projects.map((project, i) => (
                 <ProjectList

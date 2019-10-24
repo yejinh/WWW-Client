@@ -2,6 +2,8 @@ import dateFormat from 'dateformat';
 
 export const getDateFormat = date => dateFormat(date, 'dddd, mmmm dS, yyyy hTT');
 
+export const getTomorrowFormat = dateFormat(new Date().setDate(new Date().getDate() + 1), "yyyy-mm-dd'T'HH:00");
+
 export const getTime = time => {
   let day = 0;
   let hour = 0;

@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import dateFormat from 'dateformat';
 import NavContainer from '../../container/NavContainer';
 import FoundUserForm from '../FoundUserForm/FoundUserForm';
 import AddedMembers from '../AddedMembers/AddedMembers';
 import { vaildEmail } from '../../constants/regex';
+import { getTomorrowFormat } from '../../utils';
 import './NewProject.scss';
 
 const NewProject = props => {
+  const [ title, setTitle ] = useState('');
+  const [ endDate, setEndDate ] = useState(getTomorrowFormat);
+  const [ email, setEmail ] = useState('');
+  const [ errMessage, setErrMessage ] = useState('');
+
   const {
     loggedInUser,
     isCreated,
@@ -19,14 +24,6 @@ const NewProject = props => {
     onMemberAdd,
     onMemberRemove
   } = props;
-
-  const tomorrow = new Date().setDate(new Date().getDate() + 1);
-  const minTime = dateFormat(tomorrow, "yyyy-mm-dd'T'HH:00");
-
-  const [ title, setTitle ] = useState('');
-  const [ endDate, setEndDate ] = useState(minTime);
-  const [ email, setEmail ] = useState('');
-  const [ errMessage, setErrMessage ] = useState('');
 
   useEffect(() => {
     onInitMember(loggedInUser);
@@ -50,23 +47,25 @@ const NewProject = props => {
     setEmail('');
   };
 
+  const renderSuccess = () => (
+    <>
+      <div className='new-project-success'>
+        New Project Created!
+      </div>
+      <div className='new-project-success-icon'/>
+      <Link to='/'>
+        <div className='new-project-main-button' />
+        <div> BACK TO MAIN </div>
+      </Link>
+    </>
+  );
+
   return (
     <>
       <NavContainer />
       <div className='new-project-wrapper'>
         <div className='new-project-form-wrapper'>
-          {isCreated &&
-            <>
-              <div className='new-project-success'>
-                New Project Created!
-              </div>
-              <div className='new-project-success-icon'/>
-              <Link to='/'>
-                <div className='new-project-main-button' />
-                <div> BACK TO MAIN </div>
-              </Link>
-            </>
-          }
+          {isCreated && renderSuccess()}
           {!isCreated &&
             <>
               <h1>NewProject</h1>
@@ -82,8 +81,8 @@ const NewProject = props => {
                 <input
                   type='datetime-local'
                   onChange={e => setEndDate(e.target.value)}
-                  value={minTime}
-                  min={minTime}
+                  value={getTomorrowFormat}
+                  min={getTomorrowFormat}
                   className='end-date'
                   autoComplete='off'
                   required

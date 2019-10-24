@@ -20,9 +20,6 @@ const dispatchfetchProject = dispatch => async projectId => {
 
 const mapStateToProps = state => ({
   isLoading: state.projectsData.isLoading,
-  createdAt: state.projectsData.project.created_at,
-  endDate: state.projectsData.project.end_date,
-  title: state.projectsData.project.title,
   members: state.projectsData.project.members
 });
 
