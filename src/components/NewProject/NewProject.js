@@ -68,7 +68,7 @@ const NewProject = props => {
           {isCreated && renderSuccess()}
           {!isCreated &&
             <>
-              <h1>NewProject</h1>
+              <h1>New Project</h1>
               <form onSubmit={handleSubmit}>
                 <input
                   type='text'
@@ -130,7 +130,7 @@ const NewProject = props => {
                 <ul className='new-project-members-wrapper'>
                   {addedMembers.map(member => (
                     <AddedMembers
-                      key={member._id}
+                      key={member}
                       loggedInUser={loggedInUser}
                       member={member}
                       onRemoveClick={onMemberRemove}

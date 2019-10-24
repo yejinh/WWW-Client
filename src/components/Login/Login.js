@@ -1,10 +1,10 @@
 import React from 'react';
 import './Login.scss';
 
-const Login = props => {
+const Login = ({ authenticate }) => {
   const login = async() => {
     try {
-      await props.authenticate();
+      await authenticate();
     } catch(err) {
       console.error(err);
     }
