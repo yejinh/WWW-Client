@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
+import { EXTENSION_URL } from '../../constants/urls';
 
 const Nav = props => {
   const { userName, profilePhoto, onLogoutClick } = props;
@@ -35,6 +36,14 @@ const Nav = props => {
             <div className='nav-content-new-project'/>
             <div className='nav-content-text'>NEW PROJECT</div>
           </Link>
+          <a
+            href={EXTENSION_URL}
+            className='nav-content'
+            target='_black'
+          >
+            <div className='nav-content-extension'/>
+            <div className='nav-content-text'>EXTENSION</div>
+          </a>
           <div
             className='nav-content'
             onClick={onLogoutClick}

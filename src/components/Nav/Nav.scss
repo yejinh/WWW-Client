@@ -1,8 +1,8 @@
 @import '../variables.scss';
 @mixin backgroundImage ($image) {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-image: url($image);
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,6 +10,7 @@
 }
 $PROEJCT_ICON: './src/project-icon.png';
 $NEW_PROEJCT_ICON: './src/new-project-icon.png';
+$EXTENSION_ICON: './src/extension.png';
 $SIGN_OUT: './src/sign-out.png';
 
 .nav-wrapper {
@@ -33,7 +34,7 @@ $SIGN_OUT: './src/sign-out.png';
 .nav-user {
   &-profile {
     padding: 40px 0;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-align: center;
   }
 
@@ -61,17 +62,18 @@ $SIGN_OUT: './src/sign-out.png';
   display: block;
   line-height: 40px;
   padding: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   text-align: center;
+  font-size: 13px;
   border-radius: 30px;
+  box-sizing: border-box;
   opacity: 0.7;
-  font-size: 15px;
   color: $white;
   transition: all .5s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    font-size: 17px;
+    transform: scale(1.1);;
     opacity: 1;
   }
 
@@ -81,6 +83,10 @@ $SIGN_OUT: './src/sign-out.png';
 
   &-new-project {
     @include backgroundImage($NEW_PROEJCT_ICON);
+  }
+
+  &-extension {
+    @include backgroundImage($EXTENSION_ICON);
   }
 
   &-sign-out {
