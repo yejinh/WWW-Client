@@ -1,19 +1,6 @@
 @import '../variables.scss';
 $barIcon: './src/bar-icon.png';
 
-.project-total {
-  width: 85%;
-  margin-bottom: 30px;
-  padding: 20px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-  background-color: $white;
-
-  &-header {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
 .project-chart {
   width: 400px;
   height: 520px;

@@ -17,6 +17,20 @@ $REFRESH_ICON: './src/refresh-icon.png';
   background-color: $ultralightgray;
 }
 
+.project-total-wrapper {
+  width: 85%;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  background-color: $white;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+
 .project-refresh {
   display: inline-block;
   width: 50px;

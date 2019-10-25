@@ -25,10 +25,12 @@ const Project = props => {
       {(!members || isLoading) && <Loading />}
       {(members && !isLoading) &&
         <>
-          <ProjectChartTotalContainer
-            projectId={projectId}
-            memberData={memberData}
-          />
+          <div className='project-total-wrapper'>
+            <ProjectChartTotalContainer
+              projectId={projectId}
+              memberData={memberData}
+            />
+          </div>
           <ul className='project-member-wrapper'>
             {memberData.map((member, i) => (
               <ProjectChartIndividual
