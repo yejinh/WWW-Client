@@ -29,6 +29,7 @@ const Project = props => {
             <ProjectChartTotalContainer
               projectId={projectId}
               memberData={memberData}
+              fetchProject={fetchProject}
             />
           </div>
           <ul className='project-member-wrapper'>
