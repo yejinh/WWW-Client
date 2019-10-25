@@ -1,1 +1,1 @@
-export const EXTENSION_URL = 'https://chrome.google.com/webstore/detail/dfpkfpanbiknimieidehmiaghgagldho/publish-delayed';
+export const EXTENSION_URL = 'https://chrome.google.com/webstore/detail/dfpkfpanbiknimieidehmiaghgagldho';
