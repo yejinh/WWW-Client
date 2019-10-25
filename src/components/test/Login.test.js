@@ -7,8 +7,9 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const mockFetchUserData = jest.fn();
 
+const wrapper = shallow(<Login authenticate={mockFetchUserData} />);
+
 describe('Login', () => {
-  const wrapper = shallow(<Login authenticate={mockFetchUserData} />);
 
   it('should render login-button', () => {
     expect(

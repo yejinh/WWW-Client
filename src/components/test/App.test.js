@@ -25,9 +25,10 @@ const isLoggedIn = () => {
   return shallow(<App {...props} />);
 };
 
+const isNotLoggedInWrapper = isNotLoggedIn();
+const isLoggedInWrapper = isLoggedIn();
+
 describe('App', () => {
-  const isNotLoggedInWrapper = isNotLoggedIn();
-  const isLoggedInWrapper = isLoggedIn();
 
   it('should render Login component with isLoggedIn prop is false', () => {
     expect(

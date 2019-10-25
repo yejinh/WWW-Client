@@ -7,21 +7,15 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const onLogoutClick = jest.fn();
 
-const NavComponent = () => {
-  const props = {
-    userName: 'yejinh',
-    profilePhoto: 'http://',
-    onLogoutClick: onLogoutClick
-  };
-
-  const wrapper = shallow(<Nav {...props} />);
-
-  return { props, wrapper };
+const props = {
+  userName: 'yejinh',
+  profilePhoto: 'http://',
+  onLogoutClick: onLogoutClick
 };
 
+const wrapper = shallow(<Nav {...props} />);
 
 describe('Nav', () => {
-  const { props, wrapper } = NavComponent();
 
   it('should render userName prop', () => {
     expect(
@@ -41,7 +35,7 @@ describe('Nav', () => {
     ).toBe(4);
   });
 
-  it('should Link to routes', () => {
+  it('should render Link to routes', () => {
     expect(
       wrapper.find('.project').props().to
     ).toBe('/');

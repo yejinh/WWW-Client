@@ -32,7 +32,7 @@ const Project = props => {
           <ul className='project-member-wrapper'>
             {memberData.map((member, i) => (
               <ProjectChartIndividual
-                key={member._id}
+                key={member}
                 members={members}
                 member={member}
                 i={i}

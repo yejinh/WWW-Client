@@ -53,7 +53,7 @@ const NewProject = props => {
         New Project Created!
       </div>
       <div className='new-project-success-icon'/>
-      <Link to='/'>
+      <Link to='/' className='main-button'>
         <div className='new-project-main-button' />
         <div> BACK TO MAIN </div>
       </Link>
