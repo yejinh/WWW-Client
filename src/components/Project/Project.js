@@ -7,7 +7,8 @@ import './Project.scss';
 
 const Project = props => {
   const memberData = props.location.state.members;
-  const projectId = props.match.params.project_id;
+  const pathname = props.location.pathname;
+  const projectId = props.match.params.project_id || pathname.slice(pathname.lastIndexOf('/') + 1);
   const {
     isLoading,
     members,
