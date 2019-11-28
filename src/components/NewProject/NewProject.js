@@ -97,7 +97,7 @@ const NewProject = props => {
                 onSubmit={handleFindMemberByEmail}
               >
                 <label
-                  for='find-member'
+                  htmlFor='find-member'
                   className='find-member-label'
                 >
                   Find Members
@@ -130,7 +130,7 @@ const NewProject = props => {
                 <ul className='new-project-members-wrapper'>
                   {addedMembers.map(member => (
                     <AddedMembers
-                      key={member}
+                      key={member.name}
                       loggedInUser={loggedInUser}
                       member={member}
                       onRemoveClick={onMemberRemove}
