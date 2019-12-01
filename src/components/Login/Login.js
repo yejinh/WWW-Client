@@ -2,13 +2,13 @@ import React from 'react';
 import './Login.scss';
 
 const Login = ({ authenticate }) => {
-  const login = async() => {
+  const _login = async() => {
     try {
       await authenticate();
     } catch(err) {
       console.error(err);
     }
-  }
+  };
 
   return (
     <div className='login-wrapper'>
@@ -17,7 +17,7 @@ const Login = ({ authenticate }) => {
         <div className='logo' />
         <h1>We Will Work</h1>
         <div
-          onClick={login}
+          onClick={_login}
           className='login-button'
         >
           GET STARTED

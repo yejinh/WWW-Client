@@ -1,5 +1,6 @@
 @import '../variables.scss';
-$barIcon: './src/bar-icon.png';
+$REFRESH_ICON: './src/refresh-icon.png';
+$DELETE_ICON: './src/delete-icon.png';
 
 .project-chart {
   width: 400px;
@@ -17,5 +18,37 @@ $barIcon: './src/bar-icon.png';
     width: 50px;
     height: 50px;
     margin: 15px 0;
+    cursor: pointer;
   }
+}
+
+.project-refresh, .project-delete {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: {
+    top: 25px;
+    left: 20px;
+  }
+  background-position: center;
+  cursor: pointer;
+}
+
+.project-refresh {
+  border-radius: 50px;
+  background-color: $gray;
+  background-image: url($REFRESH_ICON);
+  background-repeat: no-repeat;
+  background-size: 40px;
+  transition: all .5s ease;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+}
+
+.project-delete {
+  background-image: url($DELETE_ICON);
+  background-repeat: no-repeat;
+  background-size: 30px;
 }

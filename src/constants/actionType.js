@@ -9,4 +9,5 @@ export const FIND_MEMBER = 'FIND_MEMBER';
 export const ADD_MEMBER = 'ADD_MEMBER';
 export const REMOVE_MEMBER = 'REMOVE_MEMBER';
 export const CREATE_NEW_PROJECT = 'CREATE_NEW_PROJECT';
+export const DELETE_PROJECT = 'DELETE_PROJECT';
 export const LOGOUT = 'LOGOUT';

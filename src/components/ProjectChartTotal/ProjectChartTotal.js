@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import barIcon from './src/bar-icon.png';
-import pieIcon from './src/pie-icon.png';
+import BAR_ICON from './src/bar-icon.png';
+import PIE_ICON from './src/pie-icon.png';
 import {
   getTime,
   getDateFormat,
@@ -20,7 +20,8 @@ const ProjectChartTotal = props => {
     endDate,
     title,
     members,
-    fetchProject
+    fetchProject,
+    deleteProject
   } = props;
 
   const trackingTimes = members.map(member => member.time_tracking);
@@ -65,6 +66,12 @@ const ProjectChartTotal = props => {
         display: false
       }
     };
+  };
+
+  const _handleDeleteButton = () => {
+    if (window.confirm('Are you sure you want to delete the project?')) {
+      deleteProject(projectId);
+    }
   }
 
   return (
@@ -80,13 +87,17 @@ const ProjectChartTotal = props => {
             className='project-refresh'
             onClick={() => fetchProject(projectId)}
           />
+          <span
+            className='project-delete'
+            onClick={_handleDeleteButton}
+          />
         </div>
       </div>
       <div className='project-chart'>
         <img
           onClick={() => setChartStyle(!chartStyle)}
           className='project-chart-style'
-          src={chartStyle ? barIcon : pieIcon}
+          src={chartStyle ? BAR_ICON : PIE_ICON}
           alt='chart-style'
         />
         {chartStyle

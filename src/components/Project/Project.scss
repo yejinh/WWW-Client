@@ -1,5 +1,12 @@
 @import '../variables.scss';
-$REFRESH_ICON: './src/refresh-icon.png';
+$HOME_ICON: '../src/home-icon.png';
+@mixin backgroundImg($image) {
+  margin: 100px auto 0;
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 .project-wrapper {
   display: inline-block;
@@ -17,12 +24,14 @@ $REFRESH_ICON: './src/refresh-icon.png';
   background-color: $ultralightgray;
 }
 
-.project-total-wrapper {
-  width: 85%;
-  margin-bottom: 30px;
-  padding: 20px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-  background-color: $white;
+.project-total {
+  &-wrapper {
+    width: 85%;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    background-color: $white;
+  }
 
   &-header {
     display: flex;
@@ -30,22 +39,29 @@ $REFRESH_ICON: './src/refresh-icon.png';
   }
 }
 
+.project {
+  &-deleted-wrapper {
+    width: 85%;
+    padding: 20px;
+    padding-bottom: 200px;
+    text-align: center;
+    background-color: $white;
+  }
 
-.project-refresh {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin-top: 25px;
-  border-radius: 50px;
-  background-color: $gray;
-  background-image: url($REFRESH_ICON);
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
-  transition: all .5s ease;
-  cursor: pointer;
+  &-deleted {
+    margin-top: 200px;
+    font-size: 30px;
+  }
 
-  &:hover {
-    transform: rotate(180deg);
+  &-main-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    @include backgroundImg($HOME_ICON);
+    transition: all .5s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

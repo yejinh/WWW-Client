@@ -13,7 +13,7 @@ const ProjectChartIndividual = ({ members, member, i }) => {
   const sortedTrackingTimes = trackingTimes.map(member => member.sort((a, b) => b.time - a.time));
   const laborTimePerMember = trackingTimes.map(tracking => tracking.reduce((acc, cur) => (acc + Math.floor(cur.time / 60)), 0));
 
-  const dataSets = trackingData => {
+  const _dataSets = trackingData => {
     if (!trackingData.length) {
       return EMPTY_DATA;
     }
@@ -34,7 +34,7 @@ const ProjectChartIndividual = ({ members, member, i }) => {
     };
   };
 
-  const options = trackingData => {
+  const _options = trackingData => {
     return {
       responsive: false,
       maintainAspectRatio: true,
@@ -59,10 +59,10 @@ const ProjectChartIndividual = ({ members, member, i }) => {
             <ProjectMembers member={member} />
             <div>{getTime(laborTimePerMember[i])}</div>
             <Doughnut
-              data={dataSets(sortedTrackingTimes[i])}
+              data={_dataSets(sortedTrackingTimes[i])}
               width={200}
               height={200}
-              options={options(sortedTrackingTimes[i])}
+              options={_options(sortedTrackingTimes[i])}
             />
           </div>
         </li>

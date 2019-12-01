@@ -56,6 +56,10 @@ export const createNewProject = () => ({
   type: actionType.CREATE_NEW_PROJECT
 });
 
+export const deleteProject = () => ({
+  type: actionType.DELETE_PROJECT
+});
+
 export const logout = () => ({
   type: actionType.LOGOUT
 });

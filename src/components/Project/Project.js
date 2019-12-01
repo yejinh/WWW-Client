@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import NavContainer from '../../container/NavContainer';
 import ProjectChartTotalContainer from '../../container/ProjectChartTotalContainer';
 import ProjectChartIndividual from '../ProjectChartIndividual/ProjectChartIndividual';
@@ -11,40 +12,60 @@ const Project = props => {
   const projectId = props.match.params.project_id || pathname.slice(pathname.lastIndexOf('/') + 1);
   const {
     isLoading,
+    isDeleted,
     members,
-    fetchProject
+    fetchProject,
+    deleteProject
   } = props;
 
   useEffect(() => {
     fetchProject(projectId);
   }, []);
 
+  const _renderDeleted = () => (
+    <div className='project-deleted-wrapper'>
+      <div className='project-deleted'>
+        Project Deleted Successfully!
+      </div>
+      <Link to='/' className='main-button'>
+        <div className='project-main-button' />
+        <div> BACK TO MAIN </div>
+      </Link>
+    </div>
+  );
+
   return (
     <>
       <NavContainer />
       <div className='project-wrapper'>
-      {(!members || isLoading) && <Loading />}
-      {(members && !isLoading) &&
-        <>
-          <div className='project-total-wrapper'>
-            <ProjectChartTotalContainer
-              projectId={projectId}
-              memberData={memberData}
-              fetchProject={fetchProject}
-            />
-          </div>
-          <ul className='project-member-wrapper'>
-            {memberData.map((member, i) => (
-              <ProjectChartIndividual
-                key={member}
-                members={members}
-                member={member}
-                i={i}
-              />
-            ))}
-          </ul>
-        </>
-      }
+        {isDeleted && _renderDeleted()}
+        {!isDeleted &&
+          <>
+            {(!members || isLoading) && <Loading />}
+            {(members && !isLoading) &&
+              <>
+                <div className='project-total-wrapper'>
+                  <ProjectChartTotalContainer
+                    projectId={projectId}
+                    memberData={memberData}
+                    fetchProject={fetchProject}
+                    deleteProject={deleteProject}
+                  />
+                </div>
+                <ul className='project-member-wrapper'>
+                  {memberData.map((member, i) => (
+                    <ProjectChartIndividual
+                      key={member._id}
+                      members={members}
+                      member={member}
+                      i={i}
+                    />
+                  ))}
+                </ul>
+              </>
+          }
+          </>
+        }
       </div>
     </>
   );

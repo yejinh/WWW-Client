@@ -29,13 +29,13 @@ const NewProject = props => {
     onInitMember(loggedInUser);
   }, [ loggedInUser ]);
 
-  const handleSubmit = e => {
+  const _handleSubmit = e => {
     e.preventDefault();
     onSubmitClick(title, endDate, addedMembers);
     setTitle('');
   };
 
-  const handleFindMemberByEmail = e => {
+  const _handleFindMemberByEmail = e => {
     e.preventDefault();
 
     if (!vaildEmail.test(email)) {
@@ -47,12 +47,11 @@ const NewProject = props => {
     setEmail('');
   };
 
-  const renderSuccess = () => (
+  const _renderSuccess = () => (
     <>
       <div className='new-project-success'>
         New Project Created!
       </div>
-      <div className='new-project-success-icon'/>
       <Link to='/' className='main-button'>
         <div className='new-project-main-button' />
         <div> BACK TO MAIN </div>
@@ -65,11 +64,11 @@ const NewProject = props => {
       <NavContainer />
       <div className='new-project-wrapper'>
         <div className='new-project-form-wrapper'>
-          {isCreated && renderSuccess()}
+          {isCreated && _renderSuccess()}
           {!isCreated &&
             <>
               <h1>New Project</h1>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={_handleSubmit}>
                 <input
                   type='text'
                   onChange={e => setTitle(e.target.value)}
@@ -94,7 +93,7 @@ const NewProject = props => {
                 />
               </form>
               <form
-                onSubmit={handleFindMemberByEmail}
+                onSubmit={_handleFindMemberByEmail}
               >
                 <label
                   htmlFor='find-member'
