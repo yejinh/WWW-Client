@@ -20,19 +20,19 @@ WWW은 개인 혹은 협업 프로젝트시 웹 사용 내역을 도메인과 �
 
 ## Contents
 
-[Requirements](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#requirements)
+[Requirements](https://github.com/yejinh/WWW-extension/tree/yejinh#requirements)
 
-[Installation](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#installation)
+[Installation](https://github.com/yejinh/WWW-extension/tree/yejinh#installation)
 
-[Setting](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#settings)
+[Setting](https://github.com/yejinh/WWW-extension/tree/yejinh#settings)
 
-[Features](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#features)
+[Features](https://github.com/yejinh/WWW-extension/tree/yejinh#features)
 
-[Skills](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#skills)
+[Skills](https://github.com/yejinh/WWW-extension/tree/yejinh#skills)
 
-[Challenges](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#challenges)
+[Challenges](https://github.com/yejinh/WWW-extension/tree/yejinh#challenges)
 
-[Things to Do](https://github.com/yejinh/WWW-server/new/yejinh?readme=1#things-to-do)
+[Things to Do](https://github.com/yejinh/WWW-extension/tree/yejinh#things-to-do)
 
 
 
