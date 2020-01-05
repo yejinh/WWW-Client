@@ -1,68 +1,181 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WWW
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+   WWW은 개인 혹은 협업 프로젝트시 웹 사용 내역을 도메인과 시간 단위로 트래킹한 데이터를 차트화하는 프로그램입니다.
 
-### `yarn start`
+1. 로그인 - 메인 - 프로젝트 생성 - 크롬 확장 프로그램 연결 - 로그아웃 등의 모든 페이지![1](https://yejinh-gifs.s3.ap-northeast-2.amazonaws.com/www1.gif)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+2. 사용자 검색하여 프로젝트 생성 (사용자 중복 추가 제거)![2](https://yejinh-gifs.s3.ap-northeast-2.amazonaws.com/www2.gif)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. 프로젝트 데이터 시각화 및 차트 변경
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+   ![3](https://yejinh-gifs.s3.ap-northeast-2.amazonaws.com/www3.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contents
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Requirements](https://github.com/yejinh/WWW-extension/tree/yejinh#requirements)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Installation](https://github.com/yejinh/WWW-extension/tree/yejinh#installation)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[Setting](https://github.com/yejinh/WWW-extension/tree/yejinh#settings)
 
-## Learn More
+[Features](https://github.com/yejinh/WWW-extension/tree/yejinh#features)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Skills](https://github.com/yejinh/WWW-extension/tree/yejinh#skills)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Challenges](https://github.com/yejinh/WWW-extension/tree/yejinh#challenges)
 
-### Code Splitting
+[Things to Do](https://github.com/yejinh/WWW-extension/tree/yejinh#things-to-do)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Requirements
 
-### Making a Progressive Web App
+- Chrome web browser에서 사용 가능합니다.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Facebook 계정으로 가입합니다.
 
-### Advanced Configuration
+- WWW chrome extension 설치가 선행되어야 합니다.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+  
 
-### Deployment
+## Installation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Client
 
-### `yarn build` fails to minify
+[WWW client](https://www.wewillwork.in/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+git clone https://github.com/yejinh/WWW-client.git
+cd www-client
+npm install
+npm start
+```
+
+### Server
+
+```
+git clone https://github.com/yejinh/WWW-server.git
+cd www-server
+npm install
+npm start
+```
+
+### Extension
+
+[WWW chrome extension](https://chrome.google.com/webstore/detail/dfpkfpanbiknimieidehmiaghgagldho) 배포버전 불안정 추후 수정 예정
+
+
+
+## Features
+
+- Firebase Authentication/ Facebook 을 이용한 로그인 기능
+- JSON Web Token Authentication
+- Facebook 계정으로 사용자 추가하여 새로운 프로젝트 생성
+- 크롬 확장 프로그램에서 마감기한을 넘기지 않은 프로젝트들 목록 확인 가능
+- 확장 프로그램에서 진행 중인 프로젝트 선택하여 도메인, 시간 단위로 웹 사용 트래킹
+- 웹에서 트레킹된 데이터 차트화하여 프로젝트 기여 퍼센트를 차트로 확인 기능
+
+
+
+## Skills
+
+### Client
+
+- React
+- Redux
+- React-Router
+- Chart.js
+- Jest / Enzyme for unit-test
+- Cypress for E2E test
+
+### Server
+
+- Node.js
+
+- Express
+
+- JSON Web Token Authentication
+
+- MongoDB
+
+- Mongoose
+
+- Atlas
+
+### Extension
+
+- chrome.extension API
+- JQuery
+
+
+
+## Deployment
+
+### Client
+
+- Netlify
+- Amazon Certificate Manager (ACM)
+
+### Server
+
+- Circle CI (continuous integration)
+- AWS Elastic Beanstalk (EB)
+
+### Extension 
+
+- Developer Extension 
+
+
+
+## Project Control
+
+- Git 기반 진행
+
+- Notion Todo를 이용한 Task Management
+
+  
+
+## Version Control
+
+Client, Server, Extension을 독립적으로 구분하여 Git repository 관리
+
+
+
+## Challenges
+
+- 웹이나 앱과는 다르게 구동되는 크롬 확장 프로그램을 초기에 파악하는 것이 쉽지 않았습니다.
+  완성 기간을 2주로 잡고 시작하였는데 프로젝트 특성상 트래킹 데이터를 모으는 것을 핵심 기능을 초반에 크롬 확장 프로그램을 먼저 구현해야 했는데 chrome.extension API을 기반으로 하는 익스텐션  구현이 처음이라 확장 프로그램의 코드 흐름, Manifest.json, background.js, popup.js 등 필수적인 파일들의 역할을 파악하는 것이 쉽지 않았습니다.
+  확장 프로그램 구현이 불가한 경우 프로젝트 변경이 시급한 상황이었기에 불안한 마음도 있었지만 새로 접했기 때문에 더욱 호기심을 가지고 파악하여 기획 스케줄에 차질없이 진행할 수 있었습니다.
+
+- 개발 환경에서는 문제 없던 이슈가 배포 과정시에 잦게 발생하는 것을 알게되고 이슈를 해결하며 새롭게 경험한 것이 많았습니다.
+
+  서버의 경우 AWS EB와 Circle CI를 연결하여 배포하는 과정에서 서버의 구동 흐름에 대해 조금 더 알게 되었습니다. 나아가  CI 특성상 여러 번 commit - push를 해야 했는데 배포를 완료한 이후 이전의 git 내역을 삭제 및 수정하는 방법에 대해서도 알게 되었습니다.
+
+  클라이언트의 경우 Netlify를 통해 배포한 클라이언트 사이트는 보안 설정이 되지 않은 서버로 연동이 불가하다 하여 직접 구매한 도메인을 ACM을 통해 인증 받아 https 보안 설정을 하였습니다.
+
+  크롬 확장 프로그램의 경우 배포 전 후의 이슈에 차이가 가장 크고 예기치 못한 문제들이 가장 많이 발생하였습니다. 개발 환경에서는 문제 되지 않았던 로그인시 화면 전환 불가, 트래킹 데이터가 원활하게 쌓이지 않는 문제점 등을 
+
+
+
+## Things to Do
+1. 크롬 익스텐션의 개발/ 배포 버전이 모두 개발자 도구 창을 열고 진행할 때에만 작동하여 원인에 대해 찾아보고 있는 중입니다. [비슷한 이슈](https://stackoverflow.com/questions/52949355/chrome-extension-only-works-with-console-open)
+   
+2. 서버 테스트
+
+3. 대쉬보드에서 사용자 프로젝트 데이터 모아보기
+   현재는 각 프로젝트 별로 데이터 차트화를 하여 사용자가 본인 데이터를 확인하려면 각각의 프로젝트를 모두 확인해야 하는데 메인 페이지 대쉬보드에서 로그인 사용자의 데이터만을 시각화하는 부분을 추가하고 싶습니다.
+
+4. 확장 프로그램 웹 트래킹 시 마우스 이벤트을 감지하여 서버 요청
+   현재는 탭이 꺼지거나 도메인 변경 이벤트가 발생하는 경우 시간 제한을 두고 서버에 요청을 보내는 로직이라 브라우저만 켜놓고 실제 웹 사용이 없어도 트래킹이 됩니다. 좀 더 명확한 웹 사용 확인을 위해 마우스 스크롤, 클릭 이벤트를 감지하여 서버 요청을 보내도록 수정하고자 합니다. 
+
+5. 확장 프로그램 팝업 내에서 트래킹 데이터 시각화
+   현재는 참여 중인 프로젝트 목록과 트래킹 중임을 표시하는 화면만 띄우고 있는데 수정하게 된다면 웹 화면에서의 차트와 비슷하게 확장 프로그램 팝업 내에서도 데이터를 시각적으로 확인할 수 있도록 수정하고 싶습니다. 
+

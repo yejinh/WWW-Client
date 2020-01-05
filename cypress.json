@@ -1,0 +1,11 @@
+{
+  "projectId": "h4wrvf",
+  "videos": {
+    "trashAssetsBeforeRuns": true,
+    "videoCompression": 32,
+    "recordVideos": true,
+    "videosFolder": "cypress/videos",
+    "video": true,
+    "videoUploadOnPasses": true
+  }
+}
