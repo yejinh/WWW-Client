@@ -9,7 +9,7 @@ import './App.scss';
 const App = ({ isLoggedIn, authenticate, fetchUserData }) => {
   useEffect(() => {
     fetchUserData();
-  }, [ isLoggedIn ]);
+  }, [ fetchUserData, isLoggedIn ]);
 
   return (
     <Router>
@@ -17,7 +17,7 @@ const App = ({ isLoggedIn, authenticate, fetchUserData }) => {
         {!isLoggedIn && <Login authenticate={authenticate} /> }
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/projects/new' component={NewProjectContainer} />
-        <Route path='/project/:project_id' component={ProjectConainter} />
+        <Route path='/projects/:project_id' component={ProjectConainter} />
       </Switch>
     </Router>
   );

@@ -72,7 +72,7 @@ const ProjectChartTotal = props => {
     if (window.confirm('Are you sure you want to delete the project?')) {
       deleteProject(projectId);
     }
-  }
+  };
 
   return (
     <>
@@ -114,9 +114,9 @@ const ProjectChartTotal = props => {
               options={options()}
             />
         }
-      <span>total labor time: {getTime(totalLaborTime)}</span>
-    </div>
-  </>
+        <span>total labor time: {getTime(totalLaborTime)}</span>
+      </div>
+    </>
   );
 };
 

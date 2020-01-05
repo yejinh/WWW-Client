@@ -18,9 +18,12 @@ const Project = props => {
     deleteProject
   } = props;
 
+  console.log(members);
+  console.log(isLoading);
+
   useEffect(() => {
     fetchProject(projectId);
-  }, []);
+  }, [ fetchProject, projectId ]);
 
   const _renderDeleted = () => (
     <div className='project-deleted-wrapper'>

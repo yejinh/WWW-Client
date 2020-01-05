@@ -27,7 +27,7 @@ const NewProject = props => {
 
   useEffect(() => {
     onInitMember(loggedInUser);
-  }, [ loggedInUser ]);
+  }, [ onInitMember, loggedInUser ]);
 
   const _handleSubmit = e => {
     e.preventDefault();

@@ -18,7 +18,7 @@ const ProjectList = ({ project, members }) => {
       <Link
         key={project._id}
         to={{
-          pathname: `/project/${project._id}`,
+          pathname: `/projects/${project._id}`,
           state: { members: members }
         }}
         className='project-list-title'

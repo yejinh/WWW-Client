@@ -18,7 +18,7 @@ const Main = props => {
     if (!userId) return;
 
     fetchProjects(userId);
-  }, [ userId ]);
+  }, [ fetchProjects, userId ]);
 
 
   return (
