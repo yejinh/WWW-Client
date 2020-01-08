@@ -7,8 +7,6 @@ const dispatchfetchProject = dispatch => async projectId => {
   try {
     const userData = await JSON.parse(localStorage.getItem('WWW'));
 
-    console.log(userData);
-
     dispatch(isLoading(true));
 
     const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/projects/project/${projectId}`, {

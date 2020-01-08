@@ -31,7 +31,6 @@ const dispatchAuthenticate = dispatch => async() => {
     const json = await res.json();
     const { access_token } = json;
 
-    console.log(access_token);
     dispatch(login(access_token));
     isLoading(false);
   } catch(err) {
