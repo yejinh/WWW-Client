@@ -41,13 +41,14 @@ const Nav = ({ userName, profilePhoto, onLogoutClick }) => (
           <div className='nav-content-extension'/>
           <div className='nav-content-text'>EXTENSION</div>
         </a>
-        <div
+        <Link
+          to="/"
           className='nav-content sign-out'
           onClick={onLogoutClick}
         >
           <div className='nav-content-sign-out'/>
           <div className='nav-content-text'>SIGN OUT</div>
-        </div>
+        </Link>
       </div>
     </div>
   </>

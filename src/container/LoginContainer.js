@@ -3,16 +3,11 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { connect } from 'react-redux';
 import firebaseConfig from '../config/firebase';
-import App from '../components/App/App';
-import {
-  isLoading,
-  login,
-  fetchUserData
-} from '../actions';
+import Login from '../components/Login/Login';
+import { login } from '../actions';
 
 const dispatchAuthenticate = dispatch => async() => {
   try {
-    isLoading(true);
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -32,42 +27,20 @@ const dispatchAuthenticate = dispatch => async() => {
     const { access_token } = json;
 
     dispatch(login(access_token));
-    isLoading(false);
   } catch(err) {
     console.error(err);
   }
 };
 
-const dispatchUserDataFetch = dispatch => async() => {
-  const userData = JSON.parse(localStorage.getItem('WWW'));
-
-  if (!userData) return;
-
-  const res = await fetch(`${process.env.REACT_APP_HOST_URL}/api/users/`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${userData.token}`
-    }
-  });
-
-  const json = await res.json();
-
-  dispatch(fetchUserData(json.userData));
-};
-
 const mapStateToProps = state => ({
-  isLoading: state.userData.isLoading,
-  userData: state.userData.user,
   isLoggedIn: state.userData.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({
-  authenticate: dispatchAuthenticate(dispatch),
-  fetchUserData: dispatchUserDataFetch(dispatch)
+  authenticate: dispatchAuthenticate(dispatch)
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Login);

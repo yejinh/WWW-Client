@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import './Login.scss';
 
-const Login = ({ authenticate }) => {
+const Login = ({ authenticate, isLoggedIn }) => {
+
+  const history = useHistory();
+  const location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.replace(from);
+    }
+  }, [ from, history, isLoggedIn ]);
+
   const _login = async() => {
     try {
       await authenticate();

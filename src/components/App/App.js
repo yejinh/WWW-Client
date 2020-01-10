@@ -1,23 +1,20 @@
-import React, { useEffect } from 'react';
-import Login from '../Login/Login';
+import React from 'react';
+import PrivateRoute from '../PrivateRoute';
+import LoginContainer from '../../container/LoginContainer';
 import MainContainer from '../../container/MainContainer';
 import NewProjectContainer from '../../container/NewProjectContainer';
 import ProjectConainter from '../../container/ProjectConainter';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
-const App = ({ isLoggedIn, authenticate, fetchUserData }) => {
-  useEffect(() => {
-    fetchUserData();
-  }, [ fetchUserData, isLoggedIn ]);
-
+const App = () => {
   return (
     <Router>
       <Switch>
-        {!isLoggedIn && <Login authenticate={authenticate} /> }
-        <Route exact path='/' component={MainContainer} />
-        <Route exact path='/projects/new' component={NewProjectContainer} />
-        <Route path='/projects/:project_id' component={ProjectConainter} />
+        <Route exact path='/' component={PrivateRoute(MainContainer)} />
+        <Route exact path='/login' component={LoginContainer} />
+        <Route exact path='/projects/new' component={PrivateRoute(NewProjectContainer)} />
+        <Route exact path='/projects/:project_id' component={PrivateRoute(ProjectConainter)} />
       </Switch>
     </Router>
   );
